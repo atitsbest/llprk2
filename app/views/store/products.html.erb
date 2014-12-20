@@ -1,1 +1,4 @@
 <h1><%= @product.title %></h1>
+<p><%= @product.description %></p>
+<h4><%= number_to_currency(@product.price) %><h4>
+<%= button_to 'In den Warenkorb', line_items_path(product_id: @product) %>

@@ -1,0 +1,12 @@
+<h1>Warenkorb</h1>
+
+<ul id="line_items">
+<% @cart.line_items.each do |line_item| %>
+    <li>
+        <span class="title">
+            <a href="<%= store_products_path(id: line_item.product) %>"><%= line_item.product.title %></a>
+        </span>
+        <span class="price"><%= number_to_currency(line_item.price) %></span>
+    </li>
+<% end %>
+</ul>

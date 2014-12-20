@@ -18,6 +18,11 @@ body {
 	background-color: #f1f1f1;
 }
 
+a:hover {
+    background: transparent;
+    text-decoration: none;
+}
+
 .container {
 	margin-top: 20px;
 	background: #fff;
