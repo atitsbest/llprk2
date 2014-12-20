@@ -7,6 +7,7 @@
             <a href="<%= store_products_path(id: line_item.product) %>"><%= line_item.product.title %></a>
         </span>
         <span class="price"><%= number_to_currency(line_item.price) %></span>
+        <span class="qty"><%= line_item.qty %></span>
     </li>
 <% end %>
 </ul>
