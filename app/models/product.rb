@@ -6,4 +6,9 @@ class Product < ActiveRecord::Base
 		message: 'muss eine Url zu einem Bild sein.'
 	}
 	validates :title, uniqueness: true
+
+    # Get last updates product.
+    def self.latest
+        Product.order(:updated_at).last
+    end
 end

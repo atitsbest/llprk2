@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  description: MyText
+kalender:
+  title: kalender 2015 (deutsch)
+  description: Das ist die Beschreibung.
   image_url: MyString
   price: 9.99
 
-two:
-  title: MyString
-  description: MyText
+soki:
+  title: Soki
+  description: Schnell und leicht unterwegs mit Soki.
   image_url: MyString
-  price: 9.99
+  price: 47.90
+
+jacob:
+  title: Jacob
+  description: Leichte Sommertasche in frischen Grün-Blau-Tönen
+  image_url: MyString
+  price: 47.90

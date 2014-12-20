@@ -1,9 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<% @products.each do |product| %>
-	<div class="entry">
-		<%= image_tag(product.image_url) %>
-		<h3><%= product.title %></h3>
-		<p><%= number_to_currency(product.price) %></span>
-	</div>
-<% end %>
+<div id="products">
+    <% cache ['store', Product.last] do %>
+        <% @products.each do |product| %>
+            <% cache ['product', product] do %>
+                <div class="product">
+                    <%= image_tag(product.image_url) %>
+                    <h3><%= product.title %></h3>
+                    <p><%= sanitize(product.description) %></p>
+                    <span><%= number_to_currency(product.price) %></span>
+                </div>
+            <% end %>
+        <% end %>
+    <% end %>
+</div>
