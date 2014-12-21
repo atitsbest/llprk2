@@ -15,4 +15,17 @@ class Cart < ActiveRecord::Base
         end
         current_item
     end
+
+    # Ist der Warenkorb leer?
+    def empty?
+        line_items.length == 0
+    end
+
+
+    private
+
+    def invalid_cart
+        logger.error "Versucht ungültigen Warenkorb (#{params[:id]}) zu laden!"
+        redirect_to store_url, notice: "Ungültiger Warenkorb"
+    end
 end

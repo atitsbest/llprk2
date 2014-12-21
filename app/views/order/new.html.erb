@@ -1,0 +1,53 @@
+<h1>Kasse</h1>
+<%= form_for @order do |f| %>
+    <% if @order.errors.any? %>
+        <div id="error_explanation">
+            <h2>Bitte korrigieren Sie folgende Fehler:</h2>
+            <ul>
+                <% @order.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <p>
+        <%= f.label :salutation, "Anrede" %>
+        <%= f.text_field :salutation %>
+    </p>
+    <p>
+        <%= f.label :firstname, "Vorname" %>
+        <%= f.text_field :firstname %>
+    </p>
+    <p>
+        <%= f.label :company, "Adresszusatz/Firma" %>
+        <%= f.text_field :company %>
+    </p>
+    <p>
+        <%= f.label :street, "Strasse, Nr." %>
+        <%= f.text_field :street %>
+    </p>
+    <p>
+        <%= f.label :zip, "PLZ" %>
+        <%= f.text_field :zip %>
+    </p>
+    <p>
+        <%= f.label :city, "Ort" %>
+        <%= f.text_field :city %>
+    </p>
+    <p>
+        <%= f.label :country, "Land" %>
+        <%= f.text_field :country %>
+    </p>
+    <p>
+        <%= f.label :email, "E-Mail" %>
+        <%= f.text_field :email %>
+    </p>
+    <p>
+        <%= f.label :pay_type, "Zahlungsart" %>
+        <%= f.select :pay_type, Order::PAYMENT_TYPES,
+                      prompt: 'Bitte Zahlungsart wählen' %>
+    </p>
+    <p>
+        <%= f.submit 'Bestellung abschicken' %>
+    </p>
+<% end %>

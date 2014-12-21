@@ -5,7 +5,13 @@ one:
   cart_id: 1
   price: 9.99
 
+
 two:
+  product: jacob
+  order: one
+  price: 47.50
+
+three:
   product: jacob
   cart_id: 1
   price: 47.50

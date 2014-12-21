@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  salutation: Herr
+  firstname: Stephan
+  name: Meißner
+  company: 
+  street: Teststrasse 11
+  zip: 4711
+  city: Testhausen
+  country: at
+  email: test@tester.test
+  pay_type: PayPal
+
+two:
+  salutation: MyString
+  firstname: MyString
+  name: MyString
+  company: MyString
+  street: MyString
+  zip: MyString
+  city: MyString
+  country: MyString
+  email: MyString
+  pay_type: MyString
