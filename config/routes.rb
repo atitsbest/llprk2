@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     # === ORDER ===
     get 'order/index', as: 'orders'
     get 'order/new'
-    get 'order/create'
+    post 'order/new', to: 'order#create'
 
 
     resources :products

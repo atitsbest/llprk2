@@ -1,5 +1,5 @@
 <h1>Kasse</h1>
-<%= form_for @order do |f| %>
+<%= form_for @order, url: order_new_path do |f| %>
     <% if @order.errors.any? %>
         <div id="error_explanation">
             <h2>Bitte korrigieren Sie folgende Fehler:</h2>
@@ -12,11 +12,15 @@
     <% end %>
     <p>
         <%= f.label :salutation, "Anrede" %>
-        <%= f.text_field :salutation %>
+        <%= f.select :salutation, Order::SALUTATIONS, prompt: 'Anrede wählen' %>
     </p>
     <p>
         <%= f.label :firstname, "Vorname" %>
         <%= f.text_field :firstname %>
+    </p>
+    <p>
+        <%= f.label :name, "Nachname" %>
+        <%= f.text_field :name %>
     </p>
     <p>
         <%= f.label :company, "Adresszusatz/Firma" %>
