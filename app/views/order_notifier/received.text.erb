@@ -1,0 +1,40 @@
+Hallo <%=@order.firstname%> <%=@order.name%>,
+
+VIELEN DANK FÜR DEINE BESTELLUNG - DU VERÄNDERST DAMIT LEBEN!
+
+wir haben Deine Bestellung erhalten. Deine Bestellnummer: <%=@order.order_number%>.
+
+<% @order.line_items.each do |item| %>
+  <%=item.qty%>x <%=item.product.title%> <%=number_to_currency(item.price)%>
+<% end %>
+
+Zwischensumme: <%=number_to_currency @order.sub_total_price%>
+Versandkosten: <%=number_to_currency @order.shipping_costs%>
+Gesamtkosten: <%=number_to_currency @order.total_price%>
+
+Bezahlhung per Überweisung.
+
+Lieferadresse:
+<%=@order.salutation%> <%=@order.firstname%> <%=@order.name%>
+<%=@order.company%>
+<%=@order.street%>
+<%=@order.zip%> <%=@order.city%>
+<%=I18n.t "country.#{@order.country}"%>
+
+Bitte die Bestellnummer bei der Überweisung angeben!!
+
+Sobald wir Deine Zahlung erhalten haben, verschicken wir Deine Bestellung.
+
+Liebe Grüße,
+Lilly Park
+
+Unsere Bankverbindung:
+Sparkasse Hochfranken Christina Park
+BLZ 780 500 00
+Konto NR: 222 141 772
+IBAN: DE74780500000222141772
+BIC: BYLADEM1HOF
+
+P.S.: 
+"Like" uns! www.facebook.com/ShowYourLove.info
+"Sei Gastgeber einer Taschenparty!" www.taschenparty.info

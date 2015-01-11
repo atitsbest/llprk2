@@ -10,6 +10,7 @@ two:
   product: jacob
   order: one
   price: 47.50
+  qty: 2
 
 three:
   product: jacob

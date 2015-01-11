@@ -1,4 +1,12 @@
 de:
+  order_notifier:
+      received:
+          subject: "Vielen Dank für Ihre Bestellung."
+      paid:
+          subject: "Wir haben Ihre Bezahlung erhalten."
+      shipped:
+          subject: "Ihre Bestellung wurde verschickt."
+
   date:
     abbr_day_names:
     - So
@@ -200,3 +208,7 @@ de:
       long: ! '%A, %d. %B %Y, %H:%M Uhr'
       short: ! '%d. %B, %H:%M Uhr'
     pm: nachmittags
+  country:
+      de: 'Deutschland'
+      at: 'Österreich'
+      ch: 'Schweiz'
