@@ -37,5 +37,24 @@ class OrderControllerTest < ActionController::TestCase
         assert_redirected_to store_path
     end
 
+    test "should create order number" do
+        assert_difference('Order.count') do
+            post :create, order: {
+                  salutation: 'Herr',
+                  firstname: 'Stephan',
+                  name: 'Meißner',
+                  company: nil,
+                  street: 'Teststrasse 11',
+                  zip: '4711',
+                  city: 'Testhausen',
+                  country: 'at',
+                  email: 'test@tester.test',
+                  pay_type: 'PayPal'
+            }
+        end
+
+        assert_match(/^15\d{4}\/[0-9a-f]{4}$/, Order.last.order_number)
+    end
+
 
 end

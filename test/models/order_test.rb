@@ -18,12 +18,6 @@ class OrderTest < ActiveSupport::TestCase
         assert_equal(0, cart.line_items.length)
     end
 
-    test "generates order_number" do
-        sut = orders(:one)
-
-        assert_equal("22122014", sut.order_number)
-    end
-
     test "calculates total price" do
         sut = orders(:one)
 

@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141221205403) do
+ActiveRecord::Schema.define(version: 20150111193217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "carts", force: true do |t|
+  create_table "carts", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "line_items", force: true do |t|
+  create_table "line_items", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "cart_id"
     t.decimal  "price"
@@ -35,25 +35,26 @@ ActiveRecord::Schema.define(version: 20141221205403) do
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
 
-  create_table "orders", force: true do |t|
-    t.string   "salutation"
-    t.string   "firstname"
-    t.string   "name"
-    t.string   "company"
-    t.string   "street"
-    t.string   "zip"
-    t.string   "city"
-    t.string   "country"
-    t.string   "email"
-    t.string   "pay_type"
+  create_table "orders", force: :cascade do |t|
+    t.string   "salutation",   limit: 255
+    t.string   "firstname",    limit: 255
+    t.string   "name",         limit: 255
+    t.string   "company",      limit: 255
+    t.string   "street",       limit: 255
+    t.string   "zip",          limit: 255
+    t.string   "city",         limit: 255
+    t.string   "country",      limit: 255
+    t.string   "email",        limit: 255
+    t.string   "pay_type",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "order_number",             null: false
   end
 
-  create_table "products", force: true do |t|
-    t.string   "title"
+  create_table "products", force: :cascade do |t|
+    t.string   "title",       limit: 255
     t.text     "description"
-    t.string   "image_url"
+    t.string   "image_url",   limit: 255
     t.decimal  "price"
     t.datetime "created_at"
     t.datetime "updated_at"

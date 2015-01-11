@@ -14,7 +14,8 @@ class OrderController < ApplicationController
 
     # Bestellung wird aufgegeben.
     def create
-        @order = Order.new(order_params)
+        @order = Order.new(:order_number => OrderNumberService.create_order_number)
+        @order.update(order_params)
         @order.add_line_items_from_cart(@cart)
 
         respond_to do |format|
