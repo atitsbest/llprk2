@@ -1,3 +1,40 @@
-OrderNotifier#shipped
+Hallo <%=@order.firstname%> <%=@order.name%>,
 
-<%= @greeting %>, find me in app/views/order_notifier/shipped.text.erb
+deine Bestellung ist nun auf dem Weg zu Dir. 
+Unter www.dhl.de/sendungsverfolgung kannst du den Status der Sendung verfolgen, Sendungs ID: ...
+
+Noch eine Frage? Einfach auf diese Mail antworten.
+
+Bestelldatum: <%=l @order.created_at, format: :short%>
+
+Rechnungsnummer: <%=@order.order_number%>
+
+<% @order.line_items.each do |item| %>
+  <%=item.qty%>x <%=item.product.title%> <%=number_to_currency(item.price)%>
+<% end %>
+
+Zwischensumme: <%=number_to_currency @order.sub_total_price%>
+Versandkosten: <%=number_to_currency @order.shipping_costs%>
+Gesamtkosten: <%=number_to_currency @order.total_price%>
+
+Bezahlung per Überweisung.
+
+Lieferadresse:
+<%=@order.salutation%> <%=@order.firstname%> <%=@order.name%>
+<%=@order.company%>
+<%=@order.street%>
+<%=@order.zip%> <%=@order.city%>
+<%=I18n.t "country.#{@order.country}"%>
+
+Liebe Grüße,
+Lilly Park
+
+P.S.:
+Bitte "like" uns auf Facebook, wir freuen uns auf dein Feedback.
+www.facebook.com/ShowYourLove.info
+
+Schau in unserem SHOPs vorbei!
+www.lillypark.com - www.taschenparty.net
+
+Sei Gastgeber einer Taschenparty!
+www.taschenparty.info

@@ -12,18 +12,20 @@ class OrderNotifierTest < ActionMailer::TestCase
 
   test "paid" do
     mail = OrderNotifier.paid(orders(:one))
+
     assert_equal "Wir haben Ihre Bezahlung erhalten.", mail.subject
     assert_equal ["customer@tester.test"], mail.to
     assert_equal ["test@tester.test"], mail.from
-    assert_match "Hi", mail.body.encoded
+    assert_equal read_fixture('paid').join, mail.text_part.body.decoded
   end
 
   test "shipped" do
     mail = OrderNotifier.shipped(orders(:one))
+
     assert_equal "Ihre Bestellung wurde verschickt.", mail.subject
     assert_equal ["customer@tester.test"], mail.to
     assert_equal ["test@tester.test"], mail.from
-    assert_match "Hi", mail.body.encoded
+    assert_equal read_fixture('shipped').join, mail.text_part.body.decoded
   end
 
 end

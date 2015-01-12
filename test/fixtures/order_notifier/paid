@@ -1,8 +1,8 @@
-Hallo <%=@order.firstname%> <%=@order.name%>,
+Hallo Stephan Meißner,
 
 Vielen Dank!
 
-Unser System hat heute den Geldeingang zu Deiner Bestellung <%=@order.order_number%> verbucht.
+Unser System hat heute den Geldeingang zu Deiner Bestellung 20141222/12cd verbucht.
 Deine Bestellung wird so schnell wie möglich für Dich verpackt und dann versendet.
 
 Liebe Grüße,
@@ -12,3 +12,4 @@ P.S.:
 "Like" uns!  www.facebook.com/ShowYourLove.info
 SHOPs - www.lillypark.com - www.taschenparty.net
 "Sei Gastgeber einer Taschenparty!" www.taschenparty.info
+
