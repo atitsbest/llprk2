@@ -5,11 +5,11 @@ one:
   salutation: Herr
   firstname: Stephan
   name: Meißner
-  company: 
+  company:
   street: Teststrasse 11
   zip: 4711
   city: Testhausen
-  country: at
+  country_code: at
   email: customer@tester.test
   pay_type: PayPal
   created_at: 2014-12-22 10:11:12
@@ -19,10 +19,10 @@ no_line_items:
   salutation: Herr
   firstname: Stephan
   name: Meißner
-  company: 
+  company:
   street: Teststrasse 11
   zip: 4711
   city: Testhausen
-  country: at
+  country_code: at
   email: test@tester.test
   pay_type: PayPal

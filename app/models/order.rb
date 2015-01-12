@@ -3,14 +3,13 @@ require 'securerandom'
 class Order < ActiveRecord::Base
     PAYMENT_TYPES = [ "Überweisung", "PayPal" ]
     SALUTATIONS = [ "Herr", "Frau" ]
-    COUNTRIES = [ "de", "at", "ch" ]
 
     has_many :line_items, dependent: :destroy
+    belongs_to :country, :foreign_key => :country_code
 
-    validates :order_number, :firstname, :name, :street, :zip, :city, :country, :email, presence: true
+    validates :order_number, :firstname, :name, :street, :zip, :city, :country_code, :email, presence: true
     validates :pay_type, inclusion: PAYMENT_TYPES
     validates :salutation, inclusion: SALUTATIONS
-    validates :country, inclusion: COUNTRIES
 
     # Gesamtpreis des Auftrags (exkl. Versand).
     def sub_total_price

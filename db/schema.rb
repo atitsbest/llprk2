@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150111193217) do
+ActiveRecord::Schema.define(version: 20150112205905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20150111193217) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "countries", primary_key: "code", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "countries", ["code"], name: "index_countries_on_code", unique: true, using: :btree
 
   create_table "line_items", force: :cascade do |t|
     t.integer  "product_id"
@@ -36,25 +44,27 @@ ActiveRecord::Schema.define(version: 20150111193217) do
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
-    t.string   "salutation",   limit: 255
-    t.string   "firstname",    limit: 255
-    t.string   "name",         limit: 255
-    t.string   "company",      limit: 255
-    t.string   "street",       limit: 255
-    t.string   "zip",          limit: 255
-    t.string   "city",         limit: 255
-    t.string   "country",      limit: 255
-    t.string   "email",        limit: 255
-    t.string   "pay_type",     limit: 255
+    t.string   "salutation"
+    t.string   "firstname"
+    t.string   "name"
+    t.string   "company"
+    t.string   "street"
+    t.string   "zip"
+    t.string   "city"
+    t.string   "country_code"
+    t.string   "email"
+    t.string   "pay_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "order_number",             null: false
+    t.string   "order_number", null: false
   end
 
+  add_index "orders", ["country_code"], name: "index_orders_on_country_code", using: :btree
+
   create_table "products", force: :cascade do |t|
-    t.string   "title",       limit: 255
+    t.string   "title"
     t.text     "description"
-    t.string   "image_url",   limit: 255
+    t.string   "image_url"
     t.decimal  "price"
     t.datetime "created_at"
     t.datetime "updated_at"

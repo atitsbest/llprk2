@@ -28,7 +28,7 @@ class OrderControllerTest < ActionController::TestCase
                   street: 'Teststrasse 11',
                   zip: '4711',
                   city: 'Testhausen',
-                  country: 'at',
+                  country_code: 'at',
                   email: 'test@tester.test',
                   pay_type: 'PayPal'
             }
@@ -47,7 +47,7 @@ class OrderControllerTest < ActionController::TestCase
                   street: 'Teststrasse 11',
                   zip: '4711',
                   city: 'Testhausen',
-                  country: 'at',
+                  country_code: 'at',
                   email: 'test@tester.test',
                   pay_type: 'PayPal'
             }
