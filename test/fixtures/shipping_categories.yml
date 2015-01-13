@@ -1,7 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+small:
+  name: Small
 
-two:
-  name: MyString
+medium:
+  name: Medium
+
+large:
+  name: Large
+
+kalender:
+  name: Kalender

@@ -16,3 +16,14 @@ three:
   product: jacob
   cart_id: 1
   price: 47.50
+
+two_1:
+  product: jacob
+  order: two
+  price: 47.50
+  qty: 1
+two_2:
+  product: soki
+  order: two
+  price: 35.90
+  qty: 2
