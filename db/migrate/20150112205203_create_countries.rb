@@ -1,7 +1,7 @@
 class CreateCountries < ActiveRecord::Migration
   def change
     create_table :countries, :id => false do |t|
-      t.string :code, null: false
+      t.primary_key :id, :string
       t.string :name, null: false
 
       t.timestamps null: false
@@ -9,13 +9,10 @@ class CreateCountries < ActiveRecord::Migration
 
     reversible do |dir|
         dir.up do
-            execute "ALTER TABLE countries ADD PRIMARY KEY (code);"
-            add_index :countries, :code, unique: true
+            # Country.create :id => 'de', :name => 'Deutschland'
+            # Country.create :id => 'at', :name => 'Österreich'
+            # Country.create :id => 'ch', :name => 'Schweiz'
         end
     end
-
-    # Country.create :id => 'de', :name => 'Deutschland'
-    # Country.create :id => 'at', :name => 'Österreich'
-    # Country.create :id => 'ch', :name => 'Schweiz'
   end
 end

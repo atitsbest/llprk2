@@ -33,7 +33,7 @@ class OrderController < ApplicationController
     private
 
     def order_params
-        params.require(:order).permit(:salutation, :firstname, :name, :company, :street, :zip, :city, :country_code, :email, :pay_type)
+        params.require(:order).permit(:salutation, :firstname, :name, :company, :street, :zip, :city, :country_id, :email, :pay_type)
     end
 
 end

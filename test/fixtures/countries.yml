@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 at:
-  code: at
+  id: at
   name: Österreich
 
 de:
-  code: de
+  id: de
   name: Deutschland
 
 ch:
-  code: ch
+  id: ch
   name: Schweiz

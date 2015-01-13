@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  country_id: 
+  shipping_category_id: 
+  base: 9.99
+  additional: 9.99
+
+two:
+  country_id: 
+  shipping_category_id: 
+  base: 9.99
+  additional: 9.99
