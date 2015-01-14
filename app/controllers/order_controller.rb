@@ -24,6 +24,9 @@ class OrderController < ApplicationController
                 Cart.destroy(session[:cart_id])
                 session[:cart_id] = nil
 
+                # Bestätigungs-Mail verschicken.
+                OrderNotifier.received(@order).deliver_later
+
                 format.html { redirect_to store_url, notice: 'Vielen Dank für Ihre Bestellung.' }
             else
                 format.html { render action: 'new' }
