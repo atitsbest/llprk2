@@ -12,6 +12,7 @@ one:
   country_id: at
   email: customer@tester.test
   pay_type: PayPal
+  shipping_costs: 7.0
   created_at: 2014-12-22 10:11:12
 
 two:
@@ -39,3 +40,4 @@ no_line_items:
   country_id: at
   email: test@tester.test
   pay_type: PayPal
+  shipping_costs: 0.0

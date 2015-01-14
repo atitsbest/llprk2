@@ -7,22 +7,13 @@ class Order < ActiveRecord::Base
     has_many :line_items, dependent: :destroy
     belongs_to :country
 
-    validates :order_number, :firstname, :name, :street, :zip, :city, :country_id, :email, presence: true
+    validates :order_number, :firstname, :name, :street, :zip, :city, :country_id, :email, :shipping_costs, presence: true
     validates :pay_type, inclusion: PAYMENT_TYPES
     validates :salutation, inclusion: SALUTATIONS
 
     # Gesamtpreis des Auftrags (exkl. Versand).
     def sub_total_price
         line_items.inject(0) {|sum, item| sum += item.price * item.qty} 
-    end
-
-    # Versandkosten.
-    # TODO: Eine Order muss einmalig generiet werden, und wenn die Adresse
-    #       geändert wird, muss auch die Order geändert werden.
-    #       Eine (aus der DB) geladene Order kann nicht, nach einer geänderten
-    #       Versandkostenberechnung, andere Kosten haben!
-    def shipping_costs
-        0
     end
 
     # Gesamtpreis des Auftrags (inkl. Versand).

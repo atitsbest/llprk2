@@ -5,6 +5,7 @@ class ShippingCostServiceTest < ActiveSupport::TestCase
     costs = ShippingCostService.costs_for_order(orders(:one))
     assert_equal 4.5+2.5, costs
 
+    # Leerer Warenkorb.
     costs = ShippingCostService.costs_for_order(orders(:no_line_items))
     assert_equal 0.0, costs
 

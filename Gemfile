@@ -41,3 +41,7 @@ gem "puma"
 group :development do
     gem 'web-console', '~> 2.0'
 end
+
+group :test do
+    gem 'byebug', '> 2.7.0'
+end
