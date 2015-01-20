@@ -39,8 +39,8 @@
         <%= f.text_field :city %>
     </p>
     <p>
-        <%= f.label :country, "Land" %>
-        <%= f.text_field :country %>
+        <%= f.label :country_id, "Land" %>
+        <%= f.text_field :country_id %>
     </p>
     <p>
         <%= f.label :email, "E-Mail" %>
@@ -48,8 +48,14 @@
     </p>
     <p>
         <%= f.label :pay_type, "Zahlungsart" %>
-        <%= f.select :pay_type, Order::PAYMENT_TYPES,
-                      prompt: 'Bitte Zahlungsart wählen' %>
+        <p>
+            <%= f.radio_button :pay_type, :wire %>
+            <span>Überweisung</span>
+        </p>
+        <p>
+            <%= f.radio_button :pay_type, :paypal %>
+            <%= link_to(image_tag("http://akunpaypal.files.wordpress.com/2012/02/paypal1.jpg", width:'100px'), order_express_path) %>
+        </p>
     </p>
     <p>
         <%= f.submit 'Bestellung abschicken' %>

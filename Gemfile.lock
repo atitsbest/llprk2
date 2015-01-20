@@ -37,8 +37,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
-    binding_of_caller (0.7.2)
-      debug_inspector (>= 0.0.1)
+    attr_required (1.0.0)
     builder (3.2.2)
     byebug (3.5.1)
       columnize (~> 0.8)
@@ -53,10 +52,10 @@ GEM
     coffee-script-source (1.8.0)
     columnize (0.9.0)
     commonjs (0.2.7)
-    debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     erubis (2.7.0)
     execjs (2.2.2)
+    fakeweb (1.3.0)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -84,8 +83,13 @@ GEM
     mini_portile (0.6.1)
     minitest (5.5.0)
     multi_json (1.10.1)
+    netrc (0.10.2)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
+    paypal-express (0.8.1)
+      activesupport (>= 2.3)
+      attr_required (>= 0.0.5)
+      rest-client
     pg (0.17.1)
     puma (2.9.2)
       rack (>= 1.1, < 2.0)
@@ -120,6 +124,9 @@ GEM
     rdoc (4.1.2)
       json (~> 1.4)
     ref (1.0.5)
+    rest-client (1.7.2)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -147,20 +154,17 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    web-console (2.0.0)
-      activemodel (~> 4.0)
-      binding_of_caller (>= 0.7.2)
-      railties (~> 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   byebug (> 2.7.0)
+  fakeweb (~> 1.3.0)
   jbuilder (~> 2.0)
   jquery-rails
   less-rails-bootstrap
+  paypal-express
   pg
   puma
   rails (= 4.2)
@@ -169,4 +173,3 @@ DEPENDENCIES
   therubyracer
   turbolinks
   uglifier (>= 1.3.0)
-  web-console (~> 2.0)

@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2'
-# Use postgresql as the database for Active Record
 gem 'pg'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -27,21 +26,17 @@ gem 'less-rails-bootstrap'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
 gem "puma"
 
-group :development do
-    gem 'web-console', '~> 2.0'
-end
+gem "paypal-express"
 
 group :test do
+    gem 'fakeweb', '~> 1.3.0'
+end
+
+group :test, :development do
     gem 'byebug', '> 2.7.0'
 end

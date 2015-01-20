@@ -1,43 +1,46 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  order_number: 20141222/12cd
-  salutation: Herr
-  firstname: Stephan
-  name: Meißner
-  company:
-  street: Teststrasse 11
-  zip: 4711
-  city: Testhausen
-  country_id: at
-  email: customer@tester.test
-  pay_type: PayPal
-  shipping_costs: 7.0
-  created_at: 2014-12-22 10:11:12
+    order_number: 20141222/12cd
+    salutation: Herr
+    firstname: Stephan
+    name: Meißner
+    company:
+    street: Teststrasse 11
+    zip: 4711
+    city: Testhausen
+    country_id: at
+    email: customer@tester.test
+    pay_type: PayPal
+    shipping_costs: 7.0
+    created_at: 2014-12-22 10:11:12
+    ip: 0.0.0.0
 
 two:
-  order_number: 20150105/eff3
-  salutation: Herr
-  firstname: Stephan
-  name: Meißner
-  company:
-  street: Teststrasse 11
-  zip: 4711
-  city: Testhausen
-  country_id: at
-  email: test@tester.test
-  pay_type: PayPal
+    order_number: 20150105/eff3
+    salutation: Herr
+    firstname: Stephan
+    name: Meißner
+    company:
+    street: Teststrasse 11
+    zip: 4711
+    city: Testhausen
+    country_id: at
+    email: test@tester.test
+    pay_type: PayPal
+    ip: 0.0.0.0
 
 no_line_items:
-  order_number: 20150105/eff2
-  salutation: Herr
-  firstname: Stephan
-  name: Meißner
-  company:
-  street: Teststrasse 11
-  zip: 4711
-  city: Testhausen
-  country_id: at
-  email: test@tester.test
-  pay_type: PayPal
-  shipping_costs: 0.0
+    order_number: 20150105/eff2
+    salutation: Herr
+    firstname: Stephan
+    name: Meißner
+    company:
+    street: Teststrasse 11
+    zip: 4711
+    city: Testhausen
+    country_id: at
+    email: test@tester.test
+    pay_type: PayPal
+    shipping_costs: 0.0
+    ip: 0.0.0.0

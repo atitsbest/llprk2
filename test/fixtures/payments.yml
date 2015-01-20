@@ -1,0 +1,28 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 1
+  token: 123
+  identifier: abcd
+  payer_id: MyString
+  completed: false
+  canceled: false
+  order: one
+
+two:
+  amount: 1
+  token: 234
+  identifier: xyz
+  payer_id: MyString
+  completed: false
+  canceled: false
+  order: two
+
+incomplete:
+  amount: 199
+  token: 345
+  identifier:
+  payer_id:
+  completed: false
+  canceled: false
+  order: one

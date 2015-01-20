@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     # === ORDER ===
     get 'order/new'
     post 'order/new', to: 'order#create'
+    get 'order/express' # PayPal Express Setup.
+    get 'order/express_create/:id', to: 'order#express_create', as: 'order_create_express' # PayPal Express Return Url (ersellt die Bestellung).
 
 
     resources :products

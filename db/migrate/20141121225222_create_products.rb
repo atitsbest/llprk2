@@ -8,5 +8,11 @@ class CreateProducts < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    reversible do |dir|
+        dir.up do
+            Product.create title: 'Jacob', description: 'Das ist ein Test', price: 45.90
+        end
+    end
   end
 end

@@ -9,9 +9,9 @@ class CreateCountries < ActiveRecord::Migration
 
     reversible do |dir|
         dir.up do
-            # Country.create :id => 'de', :name => 'Deutschland'
-            # Country.create :id => 'at', :name => 'Österreich'
-            # Country.create :id => 'ch', :name => 'Schweiz'
+            Country.create :id => 'de', :name => 'Deutschland'
+            Country.create :id => 'at', :name => 'Österreich'
+            Country.create :id => 'ch', :name => 'Schweiz'
         end
     end
   end
