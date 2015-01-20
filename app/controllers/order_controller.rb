@@ -29,10 +29,12 @@ class OrderController < ApplicationController
                 # Falls mit Paypal gezahlt werden soll, bereiten wir
                 # das Bezahlen vor und leiten weiter zu PayPal.
                 if @order.paypal?
-                    paypal_url = PaypalExpressCheckoutService.setup_purchase(@order,
+                    payment = Payment.create!(amount: @order.total_price, order: @order)
+                    payment.setup!(
                         order_create_express_url(@order),
-                        order_new_url)
-                    format.html { redirect_to paypal_url }
+                        order_new_url
+                    )
+                    format.html { redirect_to payment.redirect_url }
                 else
                     # Wenn kein PayPal, dann sagen wir Danke.
                     format.html { redirect_to store_url, notice: 'Vielen Dank für Ihre Bestellung.' }

@@ -52,9 +52,12 @@ class OrderControllerTest < ActionController::TestCase
     end
 
     test "continue to paypal" do
+        Payment.delete_all # Damit ein Payment mit nil identifier erstellt werden kann.
+
+        fake_paypal_response 'setup/success'
         post_create_order
 
-        assert_response :success
+        assert_response 302
     end
 
 

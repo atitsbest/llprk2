@@ -8,8 +8,6 @@ class Payment < ActiveRecord::Base
     attr_reader :redirect_url
 
     def setup!(return_url, cancel_url)
-        self.amount = order.total_price
-
         response = client.setup(
             payment_request,
             return_url,
