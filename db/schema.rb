@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20150119200556) do
 
   create_table "payments", force: :cascade do |t|
     t.integer  "order_id"
-    t.integer  "amount"
+    t.decimal  "amount"
     t.string   "token"
     t.string   "identifier"
     t.string   "payer_id"

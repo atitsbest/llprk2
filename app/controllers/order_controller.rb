@@ -29,9 +29,9 @@ class OrderController < ApplicationController
                 # Falls mit Paypal gezahlt werden soll, bereiten wir
                 # das Bezahlen vor und leiten weiter zu PayPal.
                 if @order.paypal?
-                    payment = Payment.create!(amount: @order.total_price, order: @order)
+                    payment = Payment.new(amount: @order.total_price, order: @order)
                     payment.setup!(
-                        order_create_express_url(@order),
+                        payment_success_url,
                         order_new_url
                     )
                     format.html { redirect_to payment.redirect_url }

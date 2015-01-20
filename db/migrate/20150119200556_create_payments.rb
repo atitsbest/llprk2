@@ -2,7 +2,7 @@ class CreatePayments < ActiveRecord::Migration
   def change
     create_table :payments do |t|
       t.belongs_to :order
-      t.integer :amount
+      t.decimal :amount
       t.string :token
       t.string :identifier
       t.string :payer_id

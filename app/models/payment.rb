@@ -8,6 +8,7 @@ class Payment < ActiveRecord::Base
     attr_reader :redirect_url
 
     def setup!(return_url, cancel_url)
+        byebug
         response = client.setup(
             payment_request,
             return_url,
@@ -51,6 +52,7 @@ class Payment < ActiveRecord::Base
 
     def payment_request
         request_attributes = {
+            currency_code: :EUR,
             amount: self.amount,
             shipping_amount: order.shipping_costs,
             invoice_number: order.order_number,
@@ -60,7 +62,11 @@ class Payment < ActiveRecord::Base
                 quantity: item.qty,
                 amount: item.price,
                 currency: "EUR" }
-            end
+            end,
+            :custom_fields => {
+                CARTBORDERCOLOR: "C00000",
+                LOGOIMG: "http://lillypark.com/images/syl-small.png"
+            }
         }
         Paypal::Payment::Request.new request_attributes
     end
