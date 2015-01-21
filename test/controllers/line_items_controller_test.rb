@@ -6,7 +6,7 @@ class LineItemsControllerTest < ActionController::TestCase
             post :create, product_id: products(:soki).id
         end
 
-        assert_redirected_to cart_path(assigns(:line_item).cart)
+        assert_redirected_to cart_path
         assert_not_nil flash[:notice]
     end
 end
