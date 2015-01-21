@@ -24,12 +24,16 @@ class Payment < ActiveRecord::Base
     end
 
     def cancel!
+        raise Exception.new("Payment bereits abgeschlossen!") if completed
+
         self.canceled = true
         self.save!
         self
     end
 
     def complete!(payer_id = nil)
+        raise Exception.new("Payment bereits abgeschlossen!") if completed
+
         response = client.checkout!(self.token, payer_id, payment_request)
         self.payer_id = payer_id
         self.identifier = response.payment_info.first.transaction_id

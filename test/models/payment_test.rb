@@ -12,7 +12,7 @@ class PaymentTest < ActiveSupport::TestCase
     end
 
     test "cancel" do
-        sut = Payment.first
+        sut = payments(:incomplete)
         assert(!sut.canceled)
 
         sut.cancel!
@@ -59,6 +59,12 @@ class PaymentTest < ActiveSupport::TestCase
         assert !sut.canceled
         assert_nil sut.payer_id
         assert_nil sut.identifier
+    end
+
+    test "complete completed payment" do
+        sut = payments(:complete)
+
+        assert_raises(Exception) { sut.complete! }
     end
 
 end

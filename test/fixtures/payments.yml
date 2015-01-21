@@ -26,3 +26,12 @@ incomplete:
   completed: false
   canceled: false
   order: one
+
+complete:
+  amount: 199
+  token: 456
+  identifier: id1
+  payer_id: payer_id1
+  completed: true
+  canceled: false
+  order: one

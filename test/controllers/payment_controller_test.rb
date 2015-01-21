@@ -28,4 +28,11 @@ class PaymentControllerTest < ActionController::TestCase
         assert_not_nil flash[:notice]
     end
 
+    test "cancel completed payment" do
+        get :cancel, token: '456'
+
+        assert_redirected_to store_url
+        assert_not_nil flash[:error]
+    end
+
 end
