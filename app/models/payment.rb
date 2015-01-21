@@ -39,6 +39,10 @@ class Payment < ActiveRecord::Base
         self.identifier = response.payment_info.first.transaction_id
         self.completed = true
         self.save!
+
+        # Bestätigungs-Mail verschicken.
+        OrderNotifier.paid(order).deliver_later
+
         self
     end
 

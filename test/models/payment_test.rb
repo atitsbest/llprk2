@@ -67,4 +67,13 @@ class PaymentTest < ActiveSupport::TestCase
         assert_raises(Exception) { sut.complete! }
     end
 
+    test "complete sends mail to customer" do
+        sut = payments(:incomplete)
+
+        fake_paypal_response 'checkout/success'
+        sut.complete! "payer_id"
+
+        assert_not ActionMailer::Base.deliveries.empty?, "Keine Bestätigungs-Mail versendet!"
+    end
+
 end

@@ -20,7 +20,7 @@ class OrderNotifier < ApplicationMailer
     def paid(order)
         @order = order
 
-        mail to: order.email
+        mail to: @order.email
     end
 
     # Subject can be set in your I18n file at config/locales/en.yml
@@ -31,6 +31,6 @@ class OrderNotifier < ApplicationMailer
     def shipped(order)
         @order = order
 
-        mail to: order.email
+        mail to: @order.email
     end
 end
