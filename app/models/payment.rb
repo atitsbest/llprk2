@@ -51,10 +51,10 @@ class Payment < ActiveRecord::Base
     def client
         credentials = Rails.application.secrets.paypal
         Paypal::Express::Request.new({
-            username:  credentials.username,
-            password:  credentials.password,
-            signature: credentials.signature,
-            sandbox:   credentials.sandbox,
+            username:  credentials['username'],
+            password:  credentials['password'],
+            signature: credentials['signature'],
+            sandbox:   credentials['sandbox'],
         })
     end
 
