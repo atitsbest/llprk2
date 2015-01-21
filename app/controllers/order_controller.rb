@@ -12,6 +12,15 @@ class OrderController < ApplicationController
         @order = Order.new
     end
 
+    # Offene Bestellung wird angezeigt.
+    def edit
+        @order = Order.find_by_id!(params[:id])
+
+        respond_to do |format|
+            format.html { render :new }
+        end
+    end
+
     # Bestellung wird aufgegeben.
     def create
         @order = create_order_from_cart(@cart)
@@ -44,27 +53,6 @@ class OrderController < ApplicationController
             end
         end
     end
-
-    def express_create
-        @order = Order.find(params[:id])
-
-        respond_to do |format|
-            if PaypalExpressCheckoutService.purchase_order(@order, params[:token], params[:PayerID])
-                format.html { redirect_to store_url,
-                              notice: 'Vielen Dank für Ihre Bestellung. Wir haben Ihre Bezahlung erhalten.' }
-            else
-                format.html { redirect_to order_new_url, 
-                              notice: 'Beim Bezahlen mit PayPal ist ein Fehler passiert!' }
-            end
-        end
-    end
-
-    # Paypal-Express-Checkout wird gestartet.
-    def express
-        paypal_url = PaypalExpressCheckoutService.setup_purchase(@cart, remote_ip)
-        redirect_to paypal_url
-    end
-
 
     private
 

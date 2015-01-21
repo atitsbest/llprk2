@@ -18,6 +18,12 @@ class OrderControllerTest < ActionController::TestCase
         assert_response :success
     end
 
+    test "edit" do
+        get :edit, id: orders(:one)
+
+        assert_response :success
+    end
+
     test "should create order" do
         assert_difference('Order.count') do
             post_create_wire_order
