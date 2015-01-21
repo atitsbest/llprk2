@@ -16,10 +16,12 @@ Rails.application.routes.draw do
     # === ORDER ===
     get 'order/new'
     post 'order/new', to: 'order#create'
+    get 'order/edit/:id', to: 'order#edit', as: 'order_edit'
     get 'order/express' # PayPal Express Setup.
 
     # === PAYMENT ===
     get 'payment/success'
+    get 'payment/cancel'
 
     resources :products
 

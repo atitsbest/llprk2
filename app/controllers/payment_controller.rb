@@ -9,6 +9,15 @@ class PaymentController < ApplicationController
         flash[:notice] = "Vielen Dank. Ihre Bestellung wurde bezahlt."
     end
 
+    # Wenn die Bezahlung per PayPal abgebrochen wurde.
+    def cancel
+        payment = Payment.find_by_token!(params[:token])
+        payment.cancel!
+        flash[:notice] = "Sie haben die Bezahlung per Paypal abgebrochen."
+
+        redirect_to order_edit_url(payment.order)
+    end
+
     private
 
     def paypal_api_error(e)
