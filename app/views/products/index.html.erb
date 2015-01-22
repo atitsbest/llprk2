@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>Title</th>
       <th>Description</th>
       <th>Price</th>
@@ -13,6 +14,11 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
+          <td>
+              <% if product.product_images.length > 0 %>
+              <img src="<%= product.product_images.first.image.url(:gallery) %>" />
+          <% end %>
+        </td>
         <td><%= product.title %></td>
         <td><%= product.description %></td>
         <td><%= product.price %></td>

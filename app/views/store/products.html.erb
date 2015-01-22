@@ -1,3 +1,11 @@
+<% if @product.product_images.length > 0 %>
+    <img src="<%= @product.product_images.first.image.url(:normal) %>" />
+    <ul>
+        <% @product.product_images.each do |image| %>
+            <li><img src="<%= image.image.url(:gallery) %>" /></li>
+        <% end %>
+    </ul>
+<% end %>
 <h1><%= @product.title %></h1>
 <p><%= @product.description %></p>
 <h4><%= number_to_currency(@product.price) %><h4>

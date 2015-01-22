@@ -28,6 +28,12 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
+
+        # Produktbilder hinzufügen.
+        params[:product][:product_images].each do |image|
+            @product.product_images.create(image: image)
+        end
+
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -42,6 +48,12 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
+
+        # Produktbilder hinzufügen.
+        params[:product][:product_images].each do |image|
+            @product.product_images.create(image: image)
+        end
+
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
@@ -69,6 +81,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :description, :image_url, :price)
+      params.require(:product).permit(:title, :description, :price)
     end
 end

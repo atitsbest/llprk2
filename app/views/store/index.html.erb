@@ -4,7 +4,9 @@
             <% cache ['product', product] do %>
                 <div class="product">
                     <a href="<%= store_products_path(id: product) %>">
-                        <%# <%= image_tag(product.image_url) %>
+                        <% if product.product_images.length > 0 %>
+                            <img src="<%= product.product_images.first.image.url(:gallery) %>" />
+                        <% end %>
                         <h3><%= product.title %></h3>
                         <p><%= sanitize(product.description) %></p>
                         <span><%= number_to_currency(product.price) %></span>
