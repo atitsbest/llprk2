@@ -1,14 +1,11 @@
 class Product < ActiveRecord::Base
     has_many :line_items
+    has_many :product_images
     belongs_to :shipping_category
 
-	validates :title, :description, :image_url, presence: true
-	validates :price, numericality: {greater_than_or_equal_to: 0.01}
-	validates :image_url, allow_blank: true, format: {
-		with: %r{\.(gif|jpg|png)\Z}i,
-		message: 'muss eine Url zu einem Bild sein.'
-	}
-	validates :title, uniqueness: true
+    validates :title, :description, presence: true
+    validates :price, numericality: {greater_than_or_equal_to: 0.01}
+    validates :title, uniqueness: true
 
     # Sicherstellen, dass wir keine Produkte löschen, die gerade in
     # jemandems Warenkorb liegen.

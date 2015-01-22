@@ -32,6 +32,7 @@ gem 'less-rails-bootstrap'
 gem "puma"
 
 gem "paypal-express"
+gem "paperclip", "~> 4.2"
 
 group :test do
     gem 'fakeweb', '~> 1.3.0'

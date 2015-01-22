@@ -1,4 +1,4 @@
-select * from products;
+select * from product_images;
 
 -- insert into products (title, description, price) values ('Jacob', '+++ Blah +++', 45.99)
 

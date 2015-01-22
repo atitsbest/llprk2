@@ -35,14 +35,5 @@ Rails.application.configure do
     # Raises error for missing translations
     # config.action_view.raise_on_missing_translations = true
 
-    config.after_initialize do
-        Paypal.sandbox!
-    #     ActiveMerchant::Billing::Base.mode = :test
-    #     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new({
-    #         login:  "merchant_api1.llprk.dev",
-    #         password: "KEJHC7YCJFZMJUJJ",
-    #         signature: "AFcWxV21C7fd0v3bYYYRCpSSRl31AAu1-B79YKOzS2hITWcaTPGzS5-I"
-    #     })
-    #     ::EXPRESS_GATEWAY.default_currency = 'EUR'
-    end
+    Paperclip.options[:command_path] = "/usr/bin/"
 end

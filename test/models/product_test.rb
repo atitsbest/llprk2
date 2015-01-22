@@ -8,13 +8,11 @@ class ProductTest < ActiveSupport::TestCase
     assert sut.errors[:title].any?
     assert sut.errors[:description].any?
     assert sut.errors[:price].any?
-    assert sut.errors[:image_url].any?
   end
 
   test "product price must be positive" do
 	  sut = Product.new(title: 'Meine Tasche',
-			    description: "blah",
-			    image_url: '123.jpg')
+			    description: "blah")
 	  sut.price = -1
 	  assert sut.invalid?
 
