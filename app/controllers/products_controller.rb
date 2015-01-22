@@ -23,25 +23,27 @@ class ProductsController < ApplicationController
 
   # POST /products
   # POST /products.json
-  def create
-    @product = Product.new(product_params)
+    def create
+        @product = Product.new(product_params)
 
-    respond_to do |format|
-      if @product.save
+        respond_to do |format|
+            ActiveRecord::Base.transaction do
+                if @product.save
 
-        # Produktbilder hinzufügen.
-        params[:product][:product_images].each do |image|
-            @product.product_images.create(image: image)
+                    # Produktbilder hinzufügen.
+                    params[:product][:images].each do |image|
+                        @product.images.create(content: image)
+                    end
+
+                    format.html { redirect_to @product, notice: 'Product was successfully created.' }
+                    format.json { render :show, status: :created, location: @product }
+                else
+                    format.html { render :new }
+                    format.json { render json: @product.errors, status: :unprocessable_entity }
+                end
+            end # transaction
         end
-
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
     end
-  end
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
@@ -50,8 +52,8 @@ class ProductsController < ApplicationController
       if @product.update(product_params)
 
         # Produktbilder hinzufügen.
-        params[:product][:product_images].each do |image|
-            @product.product_images.create(image: image)
+        params[:product][:images].each do |image|
+            @product.images.create(content: image)
         end
 
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }

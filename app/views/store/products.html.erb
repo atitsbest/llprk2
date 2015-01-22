@@ -1,8 +1,8 @@
-<% if @product.product_images.length > 0 %>
-    <img src="<%= @product.product_images.first.image.url(:normal) %>" />
+<% if @product.images.length > 0 %>
+    <img src="<%= @product.images.first.content.url(:normal) %>" />
     <ul>
-        <% @product.product_images.each do |image| %>
-            <li><img src="<%= image.image.url(:gallery) %>" /></li>
+        <% @product.images.each do |image| %>
+            <li><img src="<%= image.content.url(:gallery) %>" /></li>
         <% end %>
     </ul>
 <% end %>

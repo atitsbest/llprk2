@@ -21,7 +21,15 @@
   </div>
   <div class="field">
       <%= f.label :product_images %>
-      <%= f.file_field :product_images, type: :file, multiple: true %>
+      <% if @product.images.length > 0 %>
+        <ul class="unstyled">
+            <% @product.images.each do |image| %>
+                <li style="list-style-type:none;display:inline-block;"><img src="<%= image.content.url(:gallery) %>" /></li>
+            <% end %>
+        </ul>
+    <% end %>
+
+        <%= f.file_field :images, multiple: true %>
   </div>
   <div class="field">
     <%= f.label :price %><br>

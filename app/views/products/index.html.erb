@@ -15,8 +15,8 @@
     <% @products.each do |product| %>
       <tr>
           <td>
-              <% if product.product_images.length > 0 %>
-              <img src="<%= product.product_images.first.image.url(:gallery) %>" />
+              <% if product.images.length > 0 %>
+              <img src="<%= product.images.first.content.url(:gallery) %>" />
           <% end %>
         </td>
         <td><%= product.title %></td>
