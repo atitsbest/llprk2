@@ -1,11 +1,13 @@
 class Product < ActiveRecord::Base
     has_many :line_items
-    has_many :images, class_name: :ProductImage, dependent: :destroy
+    has_many :images, -> { order 'pos ASC' }, class_name: :ProductImage, dependent: :destroy
     belongs_to :shipping_category
 
     validates :title, :description, presence: true
     validates :price, numericality: {greater_than_or_equal_to: 0.01}
     validates :title, uniqueness: true
+
+    accepts_nested_attributes_for :images
 
     # Sicherstellen, dass wir keine Produkte löschen, die gerade in
     # jemandems Warenkorb liegen.
