@@ -29,9 +29,8 @@ class ProductsController < ApplicationController
         respond_to do |format|
             ActiveRecord::Base.transaction do
                 if @product.save
-
                     # Produktbilder hinzufügen.
-                    params[:product][:new_images].each do |image|
+                    (params[:product][:new_images] || []).each do |image|
                         @product.images.create(content: image)
                     end
 

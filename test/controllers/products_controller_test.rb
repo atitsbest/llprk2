@@ -16,13 +16,21 @@ class ProductsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  # test "should create product" do
-  #   assert_difference('Product.count') do
-  #     post :create, product: { description: @product.description, image_url: @product.image_url, price: @product.price, title: @product.title }
-  #   end
-  #
-  #   assert_redirected_to product_path(assigns(:product))
-  # end
+  test "should create product" do
+    assert_differences([['Product.count', 1], ['ProductImage.count', 2]]) do
+      post :create, product: {
+          description: @product.description,
+          price: @product.price,
+          title: @product.title + '_test',
+          new_images: [
+              fixture_file_upload('files/product.png', 'image/png'),
+              fixture_file_upload('files/product.png', 'image/png')
+          ]
+      }
+    end
+
+    assert_redirected_to product_path(assigns(:product))
+  end
 
   test "should show product" do
     get :show, id: @product
