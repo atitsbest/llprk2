@@ -51,7 +51,7 @@ class ProductsController < ApplicationController
             # Entfernte Bilder auch in der DB löschen.
             if params[:product][:images].include? "id" => image.id.to_s
                 # Position neu setzen.
-                image.pos = params[:product][:images].index "id" => image.id.to_s
+                image.pos = params[:product][:images].index("id" => image.id.to_s)
             elsif
                 image.destroy
             end
