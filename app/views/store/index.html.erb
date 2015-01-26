@@ -1,18 +1,21 @@
-<div id="products">
-    <% cache ['store', Product.last] do %>
-        <% @products.each do |product| %>
-            <% cache ['product', product] do %>
-                <div class="product">
-                    <a href="<%= store_products_path(id: product) %>">
-                        <% if product.images.length > 0 %>
-                            <img src="<%= product.images.first.content.url(:gallery) %>" />
-                        <% end %>
-                        <h3><%= product.title %></h3>
-                        <p><%= sanitize(product.description) %></p>
-                        <span><%= number_to_currency(product.price) %></span>
-                    </a>
-                </div>
+<div id="products" class="row">
+    <h3 class="category-header"><span>Taschen</span></h3>
+    <div class="container">
+        <% cache ['store', Product.last] do %>
+            <% @products.each do |product| %>
+                <% cache ['product', product] do %>
+                    <div class="product col-md-4 col-xs-6">
+                        <a href="<%= store_products_path(id: product) %>">
+                            <% if product.images.length > 0 %>
+                                <img class="product-image" src="<%= product.images.first.content.url(:gallery) %>" />
+                            <% end %>
+                            <h3 class="title"><%= product.title %><sup class="is-new">Neu</sup></h3>
+                            <p class="descr"><%= sanitize(product.description) %></p>
+                            <h4 class="price"><%= number_to_currency(product.price) %></h4>
+                        </a>
+                    </div>
+                <% end %>
             <% end %>
         <% end %>
-    <% end %>
+    </div>
 </div>

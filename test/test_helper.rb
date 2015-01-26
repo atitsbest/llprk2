@@ -3,7 +3,10 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
 # Include class extensions.
-Dir[File.join(Rails.root, "lib", "core_ext", "*.rb")].each {|l| require l }
+Dir[
+    File.join(Rails.root, "lib", "core_ext", "*.rb"),
+    File.join(Rails.root, "lib", "paperclip", "*.rb")
+].each {|l| require l }
 
 FakeWeb.allow_net_connect = false
 

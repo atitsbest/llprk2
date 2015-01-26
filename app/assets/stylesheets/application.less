@@ -1,0 +1,90 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require twitter/bootstrap
+ *= require_self
+ */
+@import url('http://fonts.googleapis.com/css?family=Lobster|Playball|Voltaire');
+
+
+@color: #0a4d6d;
+
+body {
+    background-color: #fff;
+    font-family: Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    margin-top: 180px;
+
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 141px;
+        background: #fff;
+
+        .logo {
+            text-align: center;
+
+            h1 { 
+                margin: 11px; 
+                font-family: Lobster; 
+                font-size: 4.5em;
+                text-transform: lowercase; 
+                color: #333;
+            }
+        }
+
+        .primary-links {
+            text-align: center;
+            background: #f1f1f1;
+            padding: 10px 0;
+            border-radius: 3px;
+
+            nav {
+                a { 
+                    margin-left: 5em;
+                    color: #999;
+                    font-weight: 300;
+                    letter-spacing: 0.2em;
+                }
+            }
+        }
+
+        .secondary-links {
+            position: absolute;
+            right: 20px;
+            top: 35px;
+        }
+    }
+
+}
+
+
+a {
+    color: @color;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: .1rem;
+
+    &:hover {
+        background: transparent;
+        text-decoration: none;
+    }
+    &:visited {
+        color: @color;
+    }
+}
+
+.container {
+}

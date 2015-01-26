@@ -7,12 +7,57 @@
 <%= csrf_meta_tags %>
 </head>
 <body>
+    <div class="container">
 
-<div class="container">
-    <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
-    <%= yield %>
+
+<%= yield %>
+
+<header class="grid" id="header">
+    <div class="table logo">
+        <a href="<%= store_url %>">
+            <h1>lillypark</h1> 
+        </a>
+    </div>
+
+    <div class="table primary-links">
+        <nav>
+            <a href="/products" class="anchor active">Taschen</a>
+            <a href="/auto-refill" class="anchor ">Accessoirs</a>
+            <a href="/" class="anchor ">Über uns</a>
+        </nav>
+    </div>
+
+    <div class="table secondary-links">
+        <div class="header-sep"></div>
+
+        <a id="header_cart_button" class="anchor cart-link">
+            Cart
+            <span class="cart-icon">
+                <span class="badge">
+                    <span id="header_cart_count">0</span>
+                </span>
+            </span>
+        </a>
+    </div>
+
+    <div class="mini-cart" id="mini_cart" style="opacity: 0; visibility: hidden;">
+        <span class="arrow"></span>
+        <a href="/cart" class="title">Your Cart (<span class="count">0</span>)</a>
+        <section class="items">
+            <p class="empty-text">You have no items in your cart.</p>
+        </section>
+        <div class="footer clear">
+            <p class="float-left">
+            Subtotal: $<span class="subtotal">0.00</span>
+            </p>
+            <a href="/cart" class="button btn medium thin blue float-right">Checkout</a>
+        </div>
+    </div>
 </div>
+
+</header>
 
 </body>
 </html>
