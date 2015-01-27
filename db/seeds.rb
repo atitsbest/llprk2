@@ -10,8 +10,9 @@ Dir[
 ].each {|l| require l }
 
 puts "Mit alter llprk-DB verbinden..."
-client=TinyTds::Client.new(username:'meist', password:'Siebzehn17', dataserver:'p9s65l7agf.database.windows.net', port:1433, database:'llprk2ALCEJZIM0h', azure: true)
+client=TinyTds::Client.new(Rails.application.secrets.old_connectionstring)
 
+# Speichert die Zuordnung von alter Produkt-Id und neuer Produkt-Id.
 pp_ids = {}
 
 ActiveRecord::Base.transaction do
