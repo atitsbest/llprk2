@@ -1,11 +1,9 @@
 #products {
-    margin-top: 50px;
-
     .category-header {
         border-bottom: 1px solid #c7c7c7;
         text-align: center;
         position: relative;
-        margin: 40px 40px 60px;
+        margin: 0 20px 60px;
 
         > span {
             background: #fff;
@@ -53,6 +51,15 @@
 }
 
 #product {
+    .title {
+        text-align: center;
+        padding-bottom: 30px;
+        h2 {
+            font-family: 'Voltaire';
+            font-size: 3em;
+        }
+    }
+
     .image {
         text-align: center;
     }
@@ -62,7 +69,7 @@
             padding-bottom: 20px;
 
             img {
-                width: 120px;
+                max-width: 60px;
             }
         }
     }
@@ -72,6 +79,20 @@
             font-weight: 100;
             color: #aaa;
             text-align: center;
+        }
+    }
+
+    .buy {
+        margin-top: 15px;
+        text-align: center;
+
+        .price, form {
+            display: inline-block;
+        }
+
+        .price {
+            margin-right: 1em;
+            font-family: 'Voltaire', Helvetica, Arial, sans-serif;
         }
     }
 }

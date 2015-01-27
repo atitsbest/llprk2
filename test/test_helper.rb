@@ -4,8 +4,8 @@ require 'rails/test_help'
 
 # Include class extensions.
 Dir[
-    File.join(Rails.root, "lib", "core_ext", "*.rb"),
-    File.join(Rails.root, "lib", "paperclip", "*.rb")
+    File.join(Rails.root, "lib", "core_ext", "*.rb")
+    # File.join(Rails.root, "lib", "paperclip", "*.rb")
 ].each {|l| require l }
 
 FakeWeb.allow_net_connect = false

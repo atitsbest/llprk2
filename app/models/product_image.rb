@@ -6,7 +6,8 @@ class ProductImage < ActiveRecord::Base
             :gallery => "200x200"
         },
         :convert_options => {
-            :retina => "-quality 50",
+            :normal => "-strip",
+            :retina => "-quality 50 -strip",
             :gallery => "-quality 75 -strip" 
         },
         processors: [:bulk]

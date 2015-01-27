@@ -1,26 +1,28 @@
 <div id="product" class="row">
-    <div class="col-xs-12">
-        <h2><%= @product.title %></h2>
-    </div>
-    <% if @product.images.length > 0 %>
-        <div class="col-xs-9 image">
-        <img src="<%= @product.images.first.content.url(:normal) %>" />
-    </div>
-    <div class="col-xs-3">
-        <ul class="list-unstyled images">
-            <% @product.images.each do |image| %>
-                <li><img src="<%= image.content.url(:gallery) %>" /></li>
+    <% cache ['store_product', @product] do %>
+        <div class="col-xs-12 title">
+            <h2><%= @product.title %></h2>
+        </div>
+        <% if @product.images.length > 0 %>
+            <div class="col-xs-9 image">
+                <img src="<%= @product.images.first.content.url(:normal) %>" />
+            </div>
+            <div class="col-xs-3">
+                <ul class="list-unstyled images">
+                    <% @product.images.each do |image| %>
+                        <li><img src="<%= image.content.url(:gallery) %>" /></li>
+                <% end %>
+                </ul>
+            </div>
         <% end %>
-        </ul>
-    </div>
-<% end %>
 
-    <div class="col-xs-12 col-lg-9 col-lg-offset-1 descr">
-        <p><%= @product.description %></p>
-    </div>
+        <div class="col-xs-12 col-lg-9 col-lg-offset-1 descr">
+            <div><%= sanitize @product.description %></div>
+        </div>
+    <% end %>
 
-    <div class="col-xs-12">
-        <h4><%= number_to_currency(@product.price) %></h4>
-        <%= button_to 'In den Warenkorb', line_items_path(product_id: @product), class: 'btn btn-primary' %>
+    <div class="col-xs-12 buy">
+        <h2 class="price"><%= number_to_currency(@product.price) %></h2>
+        <%= button_to 'In den Warenkorb', line_items_path(product_id: @product), class: 'btn btn-primary btn-buy' %>
     </div>
 </div>

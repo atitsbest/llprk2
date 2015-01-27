@@ -35,6 +35,10 @@ gem "paypal-express"
 gem "paperclip", "~> 4.2"
 gem "less-rails-bootstrap"
 
+group :development do
+    gem 'tiny_tds'
+end
+
 group :test do
     gem 'fakeweb', '~> 1.3.0'
 end
