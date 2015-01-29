@@ -1,8 +1,11 @@
 (function() {
     function ready() {
-        $('.cross-selling').owlCarousel({
-            items: 4,
-            itemsMobile: false,
+        $('.cross-selling .products').owlCarousel({
+            // items: 4,
+            // itemsDesktop: [1170, 4],
+            // itemsDesktopSmall: [970, 3],
+            // itemsTablet: [768, 2],
+            // itemsMobile: false,
             autoPlay: true
         });
     }

@@ -51,58 +51,138 @@
 }
 
 #product {
-    .title {
-        text-align: center;
+    .main {
+        background: #f7f7f7;
         padding-bottom: 30px;
-        h2 {
-            font-family: 'Voltaire';
-            font-size: 3em;
-        }
-    }
 
-    .image {
-        text-align: center;
-    }
-
-    .images {
-        li {
-            padding-bottom: 20px;
-
-            img {
-                max-width: 60px;
+        .title {
+            text-align: left;
+            h2 {
+                font-family: 'Voltaire';
+                font-size: 3em;
             }
         }
-    }
 
-    .descr {
-        p {
-            font-weight: 100;
-            color: #aaa;
+        .image {
             text-align: center;
         }
-    }
 
-    .buy {
-        margin-top: 15px;
-        text-align: center;
+        .images {
+            margin-top: 30px;
+            li {
+                padding-bottom: 20px;
 
-        .price, form {
-            display: inline-block;
+                img {
+                    max-width: 60px;
+                    border: 1px solid #fff;
+                    background: #fff;
+
+                    &.active {
+                        border-color: #aaa;
+                    }
+                }
+            }
         }
 
-        .price {
-            margin-right: 1em;
-            font-family: 'Voltaire', Helvetica, Arial, sans-serif;
+        .descr {
+            padding-top: 30px;
+            border-top: 1px solid #c7c7c7;
+
+            p {
+                font-weight: 100;
+                color: #999;
+                text-align: left;
+                width: 33%;
+                padding: 0 1.5%;
+                float: left;
+            }
+        }
+
+        .buy {
+            margin-top: 15px;
+            text-align: left;
+
+            .title {
+                color: #23527c;
+            }
+
+
+            .price, form {
+                display: block;
+                width: 100%;
+            }
+
+            .price, .title {
+                font-family: 'Voltaire', Helvetica, Arial, sans-serif;
+            }
+
+            .price {
+                font-size: 1.6em;
+                color: #666;
+                padding-bottom: 15px;
+            }
+
+            .shipping-costs, .return-policy {
+                display: block;
+                color: #999;
+                font-size: .9em;
+                letter-spacing: .1em;
+            }
+
+            .qty {
+                padding: 14px 0;
+                margin: 18px 0;
+                border-top: 1px solid;
+                border-bottom: 1px solid;
+                border-color: #c7c7c7;
+
+                input {
+                    text-align: center;
+                    width: 3em;
+                    float: right;
+                } 
+
+                label {
+                    text-transform: uppercase;
+                    letter-spacing: .1em;
+                    color: #666;
+                    position: relative;
+                    top: 2px;
+                }
+            }
+
+            .btn-primary {
+                border: none;
+                padding: 14px;
+                border-radius: 0;
+                font-weight: bold;
+                text-transform: uppercase;
+                width: 100%;
+                letter-spacing: .1em;
+            }
         }
     }
 
     .cross-selling {
         border-top: 1px solid #d8d8d8;
         padding-top: 30px;
-        margin: 40px;
+        padding-bottom: 15px;
 
-        img {
-            width: 120px;
+        .product {
+            text-align: center;
+
+            img {
+                width: 150px;
+            }
+
+            .title, .price {
+                font-family: 'Voltaire', Helvetica, Arial, sans-serif;
+                padding-bottom: 0;
+            }
+
+            .price {
+                color: #555;
+            }
         }
     }
 }
