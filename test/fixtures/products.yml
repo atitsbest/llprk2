@@ -11,6 +11,7 @@ soki:
   description: Schnell und leicht unterwegs mit Soki.
   price: 47.90
   shipping_category: small
+  categories: [tasche, frontpage]
 
 jacob:
   title: Jacob

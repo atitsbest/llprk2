@@ -5,9 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Dir[
-    File.join(Rails.root, "lib", "paperclip", "*.rb")
-].each {|l| require l }
+# Dir[
+#     File.join(Rails.root, "lib", "paperclip", "*.rb")
+# ].each {|l| require l }
 
 puts "Mit alter llprk-DB verbinden..."
 client=TinyTds::Client.new(Rails.application.secrets.old_connectionstring)

@@ -8,6 +8,13 @@ class StoreController < ApplicationController
     # Zeigt ein einzelnes Produkt an.
     def products
         @product = Product.find(params[:id])
+        @products = []
+        
+        # Cross-Selling: derzeit noch zufällig.
+        6.times do 
+            offset = rand(Product.count)
+            @products << Product.offset(offset).first
+        end
     end
 
 

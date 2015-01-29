@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+frontpage:
+  name: Frontpage
+
+tasche:
+  name: Tasche
+
+accessoirs:
+  name: Accessoirs
+
