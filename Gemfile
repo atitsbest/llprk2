@@ -37,6 +37,11 @@ gem "less-rails-bootstrap"
 
 group :development do
     gem 'tiny_tds'
+    gem 'capistrano', require: false
+    gem 'capistrano-rbenv', require: false
+    gem 'capistrano-rails', require: false
+    gem 'capistrano-bundler', require: false
+    gem 'capistrano3-puma', require: false
 end
 
 group :test do

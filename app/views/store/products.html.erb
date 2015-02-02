@@ -3,20 +3,18 @@
         <div class="container">
             <div class="row">
                 <% cache ['store_product', @product] do %>
-                <div class="col-xs-12 title">
-                </div>
                 <% if @product.images.length > 0 %>
-                <div class="col-md-2 col-xs-12">
+                <div class="col-sm-6 col-xs-12 col-sm-push-2 image">
+                    <img src="<%= @product.images.first.content.url(:normal) %>" />
+                </div>
+                <div class="col-sm-2 col-xs-12 col-sm-pull-6">
                     <ul class="list-unstyled images text-center">
                         <% @product.images.each do |image| %>
                             <li><img src="<%= image.content.url(:gallery) %>" /></li>
                     <% end %>
                     </ul>
                 </div>
-                <div class="col-md-6 col-xs-12 image">
-                    <img src="<%= @product.images.first.content.url(:normal) %>" />
-                </div>
-                <div class="col-md-4 col-xs-12 text-center buy">
+                <div class="col-sm-4 col-xs-12 text-center buy">
                     <h2 class="title"><%= @product.title %></h2>
                     <h2 class="price"><%= number_to_currency(@product.price) %></h2>
                     <span class="shipping-costs">- Einzelversand nach Österreich: <%= number_to_currency(5.30) %></span>

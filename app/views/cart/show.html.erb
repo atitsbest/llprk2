@@ -1,14 +1,42 @@
-<h1>Warenkorb</h1>
+<div id="cart">
+    <div class="container">
+        <h2>Warenkorb</h2>
 
-<ul id="line_items">
-<% @cart.line_items.each do |line_item| %>
-    <li>
-        <span class="title">
-            <a href="<%= store_products_path(id: line_item.product) %>"><%= line_item.product.title %></a>
-        </span>
-        <span class="price"><%= number_to_currency(line_item.price) %></span>
-        <span class="qty"><%= line_item.qty %></span>
-    </li>
-<% end %>
-</ul>
-<%= button_to "Zur Kasse...", order_new_path, method: :get %>
+        <div class="col-sm-9 col-xs-12">
+        <ul class="list-unstyled line_items">
+            <li class="row">
+                <div class="col-xs-8">
+                    <%= @cart.line_items.length %> Produkte zu kaufen
+                </div>
+                <div class="col-xs-2">
+                    Preis
+                </div>
+                <div class="col-xs-2">
+                    Menge
+                </div>
+            <% @cart.line_items.each do |line_item| %>
+            <li class="row">
+                <div class="col-xs-2 image">
+                    <img src="<%= line_item.product.images.first.content.url(:gallery) %>" />
+                </div>
+                <div class="col-xs-6">
+                    <span class="title">
+                        <a href="<%= store_products_path(id: line_item.product) %>"><%= line_item.product.title %></a>
+                    </span>
+                </div>
+                <div class="col-xs-2">
+                    <span class="price"><%= number_to_currency(line_item.price) %></span>
+                </div>
+                <div class="col-xs-2">
+                    <span class="qty"><%= line_item.qty %></span>
+                    <%# <%= button_to "Entfernen", delete_line_item(line_item) %>
+                </div>
+            </li>
+            <% end %>
+        </ul>
+    </div>
+
+    <div class="col-sm-3 col-xs-12">
+        <a href="<%= order_new_path %>" class="btn btn-primary">Zur Kasse...</a>
+    </div>
+</div>
