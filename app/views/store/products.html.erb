@@ -47,7 +47,7 @@
                         <% if product.images.length > 0 %>
                             <img class="product-image unveil" data-src="<%= product.images.first.content.url(:gallery) %>" />
                     <% end %>
-                        <h4 class="title"><%= product.title %><sup class="is-new">Neu</sup></h4>
+                        <h4 class="title"><%= product.title %></h4>
                         <h5 class="price"><%= number_to_currency(product.price) %></h5>
                     </a>
                 </div>

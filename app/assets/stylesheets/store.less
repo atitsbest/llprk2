@@ -25,7 +25,7 @@
             width: 200px;
             height: 200px;
         }
-        
+
         .title, .price {
             font-family: 'Voltaire', Helvetica, Arial, sans-serif;
         }
@@ -52,7 +52,7 @@
 
 #product {
     .main {
-        background: #f7f7f7;
+        // background: #f7f7f7;
         padding-bottom: 30px;
 
         .title {
@@ -90,12 +90,11 @@
         }
 
         .descr {
-            padding-top: 30px;
+            padding: 45px 0 30px;
             border-top: 1px solid #c7c7c7;
 
             p {
                 font-weight: 100;
-                color: #999;
                 text-align: left;
                 width: 33%;
                 padding: 0 1.5%;
@@ -106,6 +105,7 @@
         .buy {
             margin-top: 15px;
             text-align: left;
+            padding-bottom: 30px;
 
             .title {
                 color: #23527c;
@@ -164,6 +164,11 @@
                 text-transform: uppercase;
                 width: 100%;
                 letter-spacing: .1em;
+                background: #333;
+
+                &:hover {
+                    background: #000;
+                }
             }
         }
     }

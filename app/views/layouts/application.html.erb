@@ -2,80 +2,63 @@
 <html>
 <head>
 <title>Railsllprk</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <link href='//fonts.googleapis.com/css?family=Lobster|Voltaire' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Lobster|Voltaire' rel='stylesheet' type='text/css'>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= csrf_meta_tags %>
 </head>
 <body>
 
+<div class="container">
+    <p id="notice"><%= notice %></p>
+</div>
+
+<%= yield %>
+
+<footer>
     <div class="container">
-        <p id="notice"><%= notice %></p>
+        <div class="col-xs-12 text-center">
+            <ul class="list-unstyled list-inline">
+                <li><a href="#">AGBs</a></li>
+                <li><a href="#">Impressum</a></li>
+                <li><a href="#">Widerrufsrecht</a></li>
+                <li><a href="#">facebook</a></li>
+            </ul>
+        </div>
+        <p class="text-muted text-center">
+        &copy; <%= Date.today.year %> lillypark.com
+        </p>
     </div>
+</footer>
 
-    <%= yield %>
-
-    <footer>
-        <div class="container">
-            <div class="col-xs-12 text-center">
-                <ul class="list-unstyled list-inline">
-                    <li><a href="#">AGBs</a></li>
-                    <li><a href="#">Impressum</a></li>
-                    <li><a href="#">Widerrufsrecht</a></li>
-                    <li><a href="#">facebook</a></li>
-                </ul>
-            </div>
-            <p class="text-muted text-center">
-                &copy; <%= Date.today.year %> lillypark.com
-            </p>
-        </div>
-    </footer>
-
-    <header class="grid" id="header">
-        <div class="table logo">
-            <a href="<%= store_url %>">
-                <h1>lillypark</h1> 
-            </a>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="<%= store_url %>">lillypark</a>
         </div>
 
-        <div class="table primary-links">
-            <nav>
-                <a href="/products" class="anchor active">Taschen</a>
-                <a href="/auto-refill" class="anchor ">Accessoirs</a>
-                <a href="/" class="anchor ">Über uns</a>
-            </nav>
-        </div>
-
-        <div class="table secondary-links">
-            <div class="header-sep"></div>
-
-            <a id="header_cart_button" class="anchor cart-link">
-                Cart
-                <span class="cart-icon">
-                    <span class="badge">
-                        <span id="header_cart_count">0</span>
-                    </span>
-                </span>
-            </a>
-        </div>
-
-        <div class="mini-cart" id="mini_cart" style="opacity: 0; visibility: hidden;">
-            <span class="arrow"></span>
-            <a href="/cart" class="title">Your Cart (<span class="count">0</span>)</a>
-            <section class="items">
-                <p class="empty-text">You have no items in your cart.</p>
-            </section>
-            <div class="footer clear">
-                <p class="float-left">
-                Subtotal: $<span class="subtotal">0.00</span>
-                </p>
-                <a href="/cart" class="button btn medium thin blue float-right">Checkout</a>
-            </div>
-        </div>
-    </header>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+            <ul class="nav navbar-nav">
+                <li><a href="#">Taschen</a></li>
+                <li><a href="#">Accesoirs</a></li>
+                <li><a href="#">Über uns</a></li>
+                <!-- <li><a href="#"><img src="http://lillypark.com/images/syl&#45;small.png" alt="ShowYourLove"/></a></li> -->
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="<%= cart_url %>"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div>
+</nav>
 
 </body>
 </html>
