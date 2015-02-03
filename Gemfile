@@ -21,7 +21,6 @@ gem 'spring',        group: :development
 
 gem 'therubyracer'  # If using Ruby
 # gem 'jquery-rails'  # If using Bootstrap's JS plugins.
-gem 'less-rails-bootstrap'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -34,6 +33,7 @@ gem "puma"
 gem "paypal-express"
 gem "paperclip", "~> 4.2"
 gem "less-rails-bootstrap"
+gem "exception_notification", "~> 4.0.1"
 
 group :development do
     gem 'tiny_tds'

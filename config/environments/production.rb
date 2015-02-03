@@ -76,12 +76,20 @@ Rails.application.configure do
     # Do not dump schema after migrations.
     config.active_record.dump_schema_after_migration = false
 
-    # config.after_initialize do
-    #     ActiveMerchant::Billing::Base.mode = :test
-    #     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new({
-    #         login: ENV["PAYPAL_LOGIN"],
-    #         password: ENV["PAYPAL_PASSWORD"],
-    #         signature: ENV["PAYPAL_SIGNATURE"]
-    #     })
-    # end
+    config.action_mailer.smtp_settings = {
+        :address   => "smtp.mandrillapp.com",
+        :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
+        :enable_starttls_auto => true, # detects and uses STARTTLS
+        :user_name => Rails.application.secrets.mandrill['username'],
+        :password  => Rails.application.secrets.mandrill['password'], # SMTP password is any valid API key
+        :authentication => 'login', # Mandrill supports 'plain' or 'login'
+        # :domain => 'yourdomain.com', # your domain to identify your server when connecting
+    }
+
+    Railsllprk::Application.config.middleware.use ExceptionNotification::Rack, 
+        email: {
+        email_prefix: "llprk[PROD] ",
+        sender_address: %{"notifier" <notifier@lillypark.com>},
+        exception_recipients: %w{atitsbest.dev@gmail.com}
+    }
 end
