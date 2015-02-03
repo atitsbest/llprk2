@@ -8,7 +8,8 @@
                         <div class="product col-lg-3 col-md-4 col-sm-6 col-xs-12">
                             <a href="<%= store_products_path(id: product) %>">
                                 <% if product.images.length > 0 %>
-                                    <img class="product-image" src="<%= product.images.first.content.url(:gallery) %>" />
+                                    <img class="product-image unveil" 
+                                         data-src="<%= product.images.first.content.url(:gallery) %>" />
                                 <% end %>
                                 <h3 class="title"><%= product.title %><sup class="is-new">Neu</sup></h3>
                                 <div class="descr" style="display:none;"><%= product.description %></div>

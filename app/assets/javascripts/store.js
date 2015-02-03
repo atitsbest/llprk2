@@ -1,13 +1,15 @@
 (function() {
     function ready() {
         $('.cross-selling .products').owlCarousel({
-            // items: 4,
-            // itemsDesktop: [1170, 4],
-            // itemsDesktopSmall: [970, 3],
-            // itemsTablet: [768, 2],
-            // itemsMobile: false,
             autoPlay: true
         });
+
+        $('img').unveil(0, function(){
+            $(this).load(function(){ 
+                this.style.opacity = 1;
+            });
+        });
+
     }
 
     $(document).ready(ready);

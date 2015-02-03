@@ -5,12 +5,14 @@
                 <% cache ['store_product', @product] do %>
                 <% if @product.images.length > 0 %>
                 <div class="col-sm-6 col-xs-12 col-sm-push-2 image">
-                    <img src="<%= @product.images.first.content.url(:normal) %>" />
+                    <img src="<%= @product.images.first.content.url(:normal) %>"
+                         />
+
                 </div>
                 <div class="col-sm-2 col-xs-12 col-sm-pull-6">
                     <ul class="list-unstyled images text-center">
                         <% @product.images.each do |image| %>
-                            <li><img src="<%= image.content.url(:gallery) %>" /></li>
+                            <li><img class="unveil" data-src="<%= image.content.url(:gallery) %>" /></li>
                     <% end %>
                     </ul>
                 </div>
@@ -43,7 +45,7 @@
                     <div class="product">
                     <a href="<%= store_products_path(id: product) %>">
                         <% if product.images.length > 0 %>
-                            <img class="product-image" src="<%= product.images.first.content.url(:gallery) %>" />
+                            <img class="product-image unveil" data-src="<%= product.images.first.content.url(:gallery) %>" />
                     <% end %>
                         <h4 class="title"><%= product.title %><sup class="is-new">Neu</sup></h4>
                         <h5 class="price"><%= number_to_currency(product.price) %></h5>
