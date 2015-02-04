@@ -15,4 +15,5 @@
 //= require jquery.unveil
 //= require turbolinks
 //= require owl.carousel
+//= require twitter/bootstrap/collapse
 //= require_tree .
