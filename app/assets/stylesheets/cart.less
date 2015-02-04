@@ -1,13 +1,40 @@
 #cart {
+    padding-bottom: 30px;
+
     .line_items {
         li {
-            border-top: 1px solid #d8d8d8;
+            border-bottom: 1px solid #d8d8d8;
+            padding: 15px 0;
 
             .image {
                 img {
-                    width: 100px;
+                    height: 100px;
                 }
             }
+            
+            span, strong, input {
+                display: block;
+                margin-top: 40px;
+            }
+
+            &.sub_total {
+                padding: 30px 0;
+            }
+        }
+    }
+
+    .btn-primary {
+        border: none;
+        padding: 14px 2em;
+        border-radius: 0;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: .1em;
+        background: #333;
+        color: #fff;
+
+        &:hover {
+            background: #000;
         }
     }
 }

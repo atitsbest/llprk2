@@ -67,6 +67,13 @@
             text-align: center;
         }
 
+        .image-xs {
+            img {
+                width: 100%;
+            }
+        }
+
+
         .images {
             margin-top: 30px;
             li {
@@ -97,8 +104,15 @@
                 font-weight: 100;
                 text-align: left;
                 width: 33%;
-                padding: 0 1.5%;
+                padding: 0 15px;
                 float: left;
+            }
+            @media (max-width: 768px) {
+                p {
+                    width: 100%;
+                    padding: 0 15px;
+                    float: none;
+                }
             }
         }
 
@@ -174,6 +188,7 @@
     }
 
     .cross-selling {
+        background: #f7f7f7;
         border-top: 1px solid #d8d8d8;
         padding-top: 30px;
         padding-bottom: 15px;

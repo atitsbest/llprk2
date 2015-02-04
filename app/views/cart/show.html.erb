@@ -2,41 +2,49 @@
     <div class="container">
         <h2>Warenkorb</h2>
 
-        <div class="col-sm-9 col-xs-12">
-        <ul class="list-unstyled line_items">
-            <li class="row">
-                <div class="col-xs-8">
-                    <%= @cart.line_items.length %> Produkte zu kaufen
-                </div>
-                <div class="col-xs-2">
-                    Preis
-                </div>
-                <div class="col-xs-2">
-                    Menge
-                </div>
-            <% @cart.line_items.each do |line_item| %>
-            <li class="row">
-                <div class="col-xs-2 image">
-                    <img src="<%= line_item.product.images.first.content.url(:gallery) %>" />
-                </div>
-                <div class="col-xs-6">
-                    <span class="title">
-                        <a href="<%= store_products_path(id: line_item.product) %>"><%= line_item.product.title %></a>
-                    </span>
-                </div>
-                <div class="col-xs-2">
-                    <span class="price"><%= number_to_currency(line_item.price) %></span>
-                </div>
-                <div class="col-xs-2">
-                    <span class="qty"><%= line_item.qty %></span>
-                    <%# <%= button_to "Entfernen", delete_line_item(line_item) %>
-                </div>
-            </li>
-            <% end %>
-        </ul>
-    </div>
+        <div class="col-xs-12">
+            <ul class="list-unstyled line_items">
+                <!-- <li class="row"> -->
+                <!--     <div class="col&#45;xs&#45;8"> -->
+                <!--         <%= @cart.line_items.length %> Produkte zu kaufen -->
+                <!--     </div> -->
+                <!--     <div class="col&#45;xs&#45;2"> -->
+                <!--         Preis -->
+                <!--     </div> -->
+                <!--     <div class="col&#45;xs&#45;2"> -->
+                <!--         Menge -->
+                <!--     </div> -->
+                <% @cart.line_items.each do |line_item| %>
+                <li class="row">
+                    <div class="col-xs-2 image">
+                        <img src="<%= line_item.product.images.first.content.url(:gallery) %>" />
+                    </div>
+                    <div class="col-xs-5">
+                        <span class="title">
+                            <a href="<%= store_products_path(id: line_item.product) %>"><%= line_item.product.title %></a>
+                        </span>
+                    </div>
+                    <div class="col-xs-1 text-right">
+                        <input type="text" class="qty text-center" value="<%= line_item.qty %>" style="width:3em;" />
+                        <%# <%= button_to "Entfernen", delete_line_item(line_item) %>
+                    </div>
+                    <div class="col-xs-2 text-right">
+                        <span class="price"><%= number_to_currency(line_item.price) %></span>
+                    </div>
+                    <div class="col-xs-2 text-right">
+                        <strong class="price"><%= number_to_currency(line_item.price * line_item.qty) %></strong>
+                    </div>
+                </li>
+                <% end %>
+                <li class="row sub_total">
+                    <div class="col-xs-12 text-right">
+                        <span>Zwischensumme von <%= @cart.line_items.length %> Artikel(n): </span>
+                        <strong><%= number_to_currency @cart.sub_total_price %></strong>
+                </li>
+            </ul>
+        </div>
 
-    <div class="col-sm-3 col-xs-12">
-        <a href="<%= order_new_path %>" class="btn btn-primary">Zur Kasse...</a>
-    </div>
+        <div class="col-xs-12 text-right">
+            <a href="<%= order_new_path %>" class="btn btn-primary">Zur Kasse...</a>
+        </div>
 </div>
