@@ -9,8 +9,9 @@
             </div>
         <% else %>
             <div class="col-xs-12">
+                <h3 class="hidden-sm">Warenkorb</h3>
                 <ul class="list-unstyled line_items">
-                    <li class="row header">
+                    <li class="row header hidden-xs">
                         <div class="col-xs-7">
                             <h3>Warenkorb</h3>
                         </div>
@@ -25,23 +26,23 @@
                         </div>
                     </li>
                     <% @cart.line_items.each do |line_item| %>
-                    <li class="row item">
-                        <div class="col-xs-2 image">
+                    <li class="item row clearfix">
+                        <div class="col-sm-2 col-xs-12 image">
                             <img src="<%= line_item.product.images.first.content.url(:gallery) %>" />
                         </div>
-                        <div class="col-xs-5">
+                        <div class="col-sm-5 col-xs-12">
                             <span class="title">
                                 <a href="<%= store_products_path(id: line_item.product) %>"><%= line_item.product.title %></a>
                             </span>
                         </div>
-                        <div class="col-xs-1 text-center">
+                        <div class="col-sm-1 col-xs-2 text-center">
                             <input type="text" class="qty text-center" value="<%= line_item.qty %>" style="width:3em;" />
                             <a href="#" class="text-muted">entfernen</a>
                         </div>
-                        <div class="col-xs-2 text-right">
+                        <div class="col-sm-2 col-xs-5 text-right">
                             <span class="price"><%= number_to_currency(line_item.price) %></span>
                         </div>
-                        <div class="col-xs-2 text-right">
+                        <div class="col-sm-2 col-xs-5 text-right">
                             <strong class="price"><%= number_to_currency(line_item.price * line_item.qty) %></strong>
                         </div>
                     </li>
@@ -49,7 +50,7 @@
                     <li class="row sub_total">
                         <div class="col-xs-12 text-right">
                             <span>Zwischensumme von <%= @cart.line_items.length %> Artikel(n): </span>
-                            <strong><%= number_to_currency @cart.sub_total_price %></strong>
+                            <h3 class="amount"><%= number_to_currency @cart.sub_total_price %></h3>
                     </li>
                 </ul>
             </div>
