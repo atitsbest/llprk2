@@ -6,6 +6,6 @@ class CartControllerTest < ActionController::TestCase
 
         assert_response :success
 
-        assert_select "#line_items li", 2
+        assert_select "#cart li.clearfix", Cart.find(1).line_items.length
     end
 end

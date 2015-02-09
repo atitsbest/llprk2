@@ -11,6 +11,7 @@ class OrderControllerTest < ActionController::TestCase
         item = LineItem.new
         item.build_cart
         item.product = products(:soki)
+        item.price = 9.99
         item.save!
 
         get :new, nil, { :cart_id => item.cart.id }

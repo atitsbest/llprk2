@@ -27,7 +27,9 @@
                     <% @cart.line_items.each do |line_item| %>
                     <li class="item row clearfix">
                         <div class="col-sm-2 col-xs-12 image">
-                            <img src="<%= line_item.product.images.first.content.url(:gallery) %>" />
+                            <% if line_item.product.images.first %>
+                                <img src="<%= line_item.product.images.first.content.url(:gallery) %>" />
+                            <% end %>
                         </div>
                         <div class="col-sm-5 col-xs-12">
                             <span class="title">

@@ -25,7 +25,7 @@ class Cart < ActiveRecord::Base
 
     # Gesamtpreis des Auftrags (exkl. Versand).
     def sub_total_price
-        line_items.inject(0) {|sum, item| sum += item.price * item.qty} 
+        line_items.inject(0) {|sum, item| sum += item.price * item.qty }
     end
 
     private
