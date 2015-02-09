@@ -50,11 +50,11 @@ class Payment < ActiveRecord::Base
 
     def client
         credentials = Rails.application.secrets.paypal
+        Paypal.sandbox! if credentials['sandbox'] == true
         Paypal::Express::Request.new({
             username:  credentials['username'],
             password:  credentials['password'],
-            signature: credentials['signature'],
-            sandbox:   credentials['sandbox'],
+            signature: credentials['signature']
         })
     end
 
