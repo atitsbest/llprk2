@@ -14,6 +14,7 @@
  *= require twitter/bootstrap
  *= require owl.carousel
  *= require owl.theme
+ *= require ionicons
  *= require_self
  */
 
@@ -56,6 +57,19 @@ body {
                     padding-top: 30px;
                     padding-bottom: 8px;
                     text-transform: uppercase;
+                }
+
+            }
+
+            &.cart {
+                li {
+                    max-height: 58px;
+
+                    i.icon {
+                        font-size: 1.8em;
+                        position: relative;
+                        top: -3px;
+                    }
                 }
             }
         }
