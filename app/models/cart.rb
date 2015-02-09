@@ -3,15 +3,17 @@ class Cart < ActiveRecord::Base
 
     # Ein Produkt hinzufügen.
     #
-    # @param {Product} das hinzugefügt werden soll. 
+    # @param {Product} das hinzugefügt werden soll.
+    # @param {integer} qty Anzahl der Einheiten des angegebenen Produkts.
     #
     # @returns {LineItem} mit dem Produkt.
-    def add_product(product)
+    def add_product(product, qty=1)
         current_item = line_items.find_by(product_id: product.id)
         if current_item
-            current_item.qty += 1
+            current_item.qty += qty
         else
             current_item = line_items.build(product_id: product.id, price: product.price)
+            current_item.qty = qty
         end
         current_item
     end

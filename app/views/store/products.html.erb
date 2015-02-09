@@ -29,10 +29,12 @@
                         <h2 class="price"><%= number_to_currency(@product.price) %></h2>
                         <span class="shipping-costs">- Einzelversand nach Österreich: <%= number_to_currency(5.30) %></span>
                         <span class="return-policy">- 14 Tage Rückgaberecht</span>
-                        <form class="qty">
-                            <label>Menge</label><input type="text" value="1" />
-                        </form>
-                        <%= button_to 'In den Warenkorb', line_items_path(product_id: @product), class: 'btn btn-primary btn-buy' %>
+                        <%= form_tag line_items_path(product_id: @product) do%>
+                            <p class="qty">
+                                <label>Menge</label><input type="text"i name="qty" value="1" />
+                            </p>
+                            <button type="submit" class="btn btn-primary">In den Warenkorb</button>
+                        <% end %>
                     </div>
                 <% end %>
 
