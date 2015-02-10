@@ -34,6 +34,7 @@ gem "paypal-express"
 gem "paperclip", "~> 4.2"
 gem "less-rails-bootstrap"
 gem "exception_notification", "~> 4.0.1"
+gem "rabl", "~> 0.11.0"
 
 group :development do
     gem 'tiny_tds'

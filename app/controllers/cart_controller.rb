@@ -4,6 +4,6 @@ class CartController < ApplicationController
 
     # Zeigt den Warenkorb an.
     def show
-        # @cart wird schon in set_cart geladen.
     end
+
 end

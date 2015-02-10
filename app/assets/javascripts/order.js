@@ -1,0 +1,1 @@
+$('.order.show').ready(function() {});

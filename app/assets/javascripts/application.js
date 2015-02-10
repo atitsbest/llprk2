@@ -13,6 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.unveil
+//= require jquery.readyselector
+//= require underscore
+//= require knockout-3.2.0
+//= require knockout.mapping
 //= require turbolinks
 //= require owl.carousel
 //= require twitter/bootstrap/collapse
