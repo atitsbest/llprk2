@@ -29,13 +29,15 @@
                         <div class="col-sm-2 col-xs-12 image">
                             <img data-bind="attr: {src:product.product_images[0].url}" />
                         </div>
-                        <div class="col-sm-5 col-xs-12">
+                        <div class="col-sm-4 col-xs-12">
                             <span class="title">
                                 <a data-bind="attr: { href: product.url }, text:product.title"></a>
                             </span>
                         </div>
-                        <div class="col-sm-1 col-xs-1 text-center">
-                            <input type="text" data-bind="textInput:qty" class="qty text-center form-control" style="width: 3em;" />
+                        <div class="col-sm-2 col-xs-2 text-center qty">
+                            <i class="ion-ios-minus-outline" data-bind="click:decQty"></i>
+                            <input type="text" data-bind="textInput:qty" class="text-center form-control" style="width: 3em;" />
+                            <i class="ion-ios-plus-outline" data-bind="click:incQty"></i>
                             <%# <%= link_to 'entfernen', line_item, method: :delete, html: { class: 'text-muted' } %>
                         </div>
                         <div class="col-sm-2 col-xs-5 text-right">
