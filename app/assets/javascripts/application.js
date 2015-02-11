@@ -17,7 +17,14 @@
 //= require underscore
 //= require knockout-3.2.0
 //= require knockout.mapping
+//= require knockout.punches
 //= require turbolinks
 //= require owl.carousel
 //= require twitter/bootstrap/collapse
 //= require_tree .
+
+// Knockout.Punches:
+ko.punches.attributeInterpolationMarkup.enable();
+// Enable filter syntax for text, html
+ko.punches.textFilter.enableForBinding('text');
+ko.punches.textFilter.enableForBinding('html');
