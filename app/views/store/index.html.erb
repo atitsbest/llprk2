@@ -8,13 +8,14 @@
                         <div class="product col-lg-3 col-md-4 col-sm-4 col-xs-12">
                             <a href="<%= store_products_path(id: product) %>">
                                 <% if product.images.length > 0 %>
-                                    <img class="product-image unveil" 
+                                    <img class="product-image unveil"
                                          data-src="<%= product.images.first.content.url(:gallery) %>" />
                                 <% end %>
                                 <h4 class="title"><%= product.title %><sup class="is-new">Neu</sup></h4>
                                 <div class="descr" style="display:none;"><%= product.description %></div>
                                 <h5 class="price"><%= number_to_currency(product.price) %></h5>
                             </a>
+                            <hr class="visible-xs-block" />
                         </div>
                     <% end %>
                 <% end %>

@@ -2,18 +2,18 @@ class StoreController < ApplicationController
 
     # Zeigt alle Produkte an.
     def index
-        @products = Product.order(:title)
+        @products = Product.includes(:images).order(:title)
     end
 
     # Zeigt ein einzelnes Produkt an.
     def products
-        @product = Product.find(params[:id])
+        @product = Product.includes(:images).find(params[:id])
         @products = []
-        
+
         # Cross-Selling: derzeit noch zufällig.
-        6.times do 
+        6.times do
             offset = rand(Product.count)
-            @products << Product.offset(offset).first
+            @products << Product.includes(:images).offset(offset).first
         end
     end
 
