@@ -37,6 +37,8 @@
                 }
             }
             @media (max-width: 768px) {
+                border-bottom: none;
+
                 .image {
                     text-align: center;
 
@@ -49,15 +51,43 @@
             &.item {
                 .noselect;
 
+                > div {
+                    line-height: 100px;
+                }
+
+
                 @media (max-width: 768px) {
                     .col-xs-12 {
-                        border-bottom: 1px solid #d8d8d8;
+                        text-align: left;
+                        line-height: 48px;
+                        height: 48px;
+
+                        span, strong, .qty-ctrl {
+                            position: absolute;
+                            right: 0;
+                        }
                     }
+                    
+                    .title {
+                        text-align: left;
+                    }
+                    .image {
+                        height: auto;
+                    }
+
+                    .price, .qty, .total-price {
+                        border-top: 1px solid #d8d8d8;
+                    }
+                    .total-price {
+                        border-top: 2px solid #333;
+                    }
+
                 }
+
 
                 span, strong, input {
                     display: inline-block;
-                    margin-top: 40px;
+                    // margin-top: 40px;
                 }
 
                 a {
@@ -69,10 +99,11 @@
                     }
                 }
 
-                .qty {
+                .qty-ctrl {
+                    display: inline-block;
+
                     .form-control {
                         display: inline-block;
-                        margin-top: 35px;
                     }
 
                     i {

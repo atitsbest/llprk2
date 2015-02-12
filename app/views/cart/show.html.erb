@@ -20,10 +20,10 @@
                     </li>
                     <!-- ko foreach: lineItems -->
                     <li class="item row clearfix">
-                        <div class="col-xs-12 visible-xs-block text-center">
-                            <span class="title">
+                        <div class="col-xs-12 visible-xs-block text-center title">
+                            <h4>
                                 <a data-bind="attr: { href: product.url }, text:product.title"></a>
-                            </span>
+                            </h4>
                         </div>
                         <div class="col-sm-2 col-xs-12 image">
                             <img data-bind="attr: {src:product.product_images[0].url}" />
@@ -31,22 +31,24 @@
                         <div class="col-sm-4 col-xs-12 hidden-xs">
                             <span class="title">
                                 <a data-bind="attr: { href: product.url }, text:product.title"></a>
-                            <a href="#" class="remove" title="Artikel entfernen"><i class="ion-ios-close-outline"></i></a>
+                                <a href="#" class="remove" title="Artikel entfernen"><i class="ion-ios-close-outline"></i></a>
                             </span>
                         </div>
-                        <div class="col-sm-2 col-xs-12 text-right">
+                        <div class="col-sm-2 col-xs-12 text-right price">
                             <label class="visible-xs-inline-block">Einzelpreis</label>
-                            <span class="price" data-bind="text:price|currency "></span>
+                            <span data-bind="text:price|currency "></span>
                         </div>
                         <div class="col-sm-2 col-xs-12 text-center qty">
                             <label class="visible-xs-inline-block">Menge</label>
-                            <i class="ion-ios-minus-outline" data-bind="click:decQty"></i>
-                            <input type="text" data-bind="textInput:qty" class="text-center form-control" style="width: 3em;" />
-                            <i class="ion-ios-plus-outline" data-bind="click:incQty"></i>
+                            <div class="qty-ctrl">
+                                <i class="ion-ios-minus-outline" data-bind="click:decQty"></i>
+                                <input type="text" data-bind="textInput:qty" class="text-center form-control" style="width: 3em;" />
+                                <i class="ion-ios-plus-outline" data-bind="click:incQty"></i>
+                            </div>
                         </div>
-                        <div class="col-sm-2 col-xs-12 text-right">
+                        <div class="col-sm-2 col-xs-12 text-right total-price">
                             <label class="visible-xs-inline-block">Preis</label>
-                            <strong class="price" data-bind="text:sum|currency"></strong>
+                            <strong data-bind="text:sum|currency"></strong>
                         </div>
                     </li>
                     <!-- /ko -->

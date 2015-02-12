@@ -20,6 +20,8 @@
 //= require knockout.punches
 //= require turbolinks
 //= require owl.carousel
+//= require spin
+//= require ladda
 //= require twitter/bootstrap/collapse
 //= require_tree .
 
@@ -28,3 +30,5 @@ ko.punches.attributeInterpolationMarkup.enable();
 // Enable filter syntax for text, html
 ko.punches.textFilter.enableForBinding('text');
 ko.punches.textFilter.enableForBinding('html');
+
+Ladda.bind('input[type=submit]');
