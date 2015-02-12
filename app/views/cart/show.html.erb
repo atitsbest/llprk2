@@ -1,68 +1,65 @@
 <div id="cart">
     <div class="container">
-        <% if @cart.line_items.length == 0 %>
-            <div class="row empty-cart">
-                <div class="col-xs-12 text-center">
-                    <h3>Dein Warenkorb ist noch leer.</h3>
-                    <a href="<%= store_url %>">Hier geht's zum Shop</a>
-                </div>
+        <div class="row empty-cart" data-bind="visible:empty" style="display:none;">
+            <div class="col-xs-12 text-center">
+                <h3>Dein Warenkorb ist noch leer.</h3>
+                <a href="<%= store_url %>">Hier geht's zum Shop</a>
             </div>
-        <% else %>
-            <div class="col-xs-12">
-                <ul class="list-unstyled line_items">
-                    <li class="row header hidden-xs">
-                        <div class="col-xs-6">
-                            <h3>Warenkorb</h3>
-                        </div>
-                        <div class="col-xs-2 text-right"> Preis </div>
-                        <div class="col-xs-2 text-center"> Menge </div>
-                        <div class="col-xs-2 text-right"> Summe </div>
-                    </li>
-                    <!-- ko foreach: lineItems -->
-                    <li class="item row clearfix">
-                        <div class="col-xs-12 visible-xs-block text-center title">
-                            <h4>
-                                <a data-bind="attr: { href: product.url }, text:product.title"></a>
-                            </h4>
-                        </div>
-                        <div class="col-sm-2 col-xs-12 image">
-                            <img data-bind="attr: {src:product.product_images[0].url}" />
-                        </div>
-                        <div class="col-sm-4 col-xs-12 hidden-xs">
-                            <span class="title">
-                                <a data-bind="attr: { href: product.url }, text:product.title"></a>
-                                <a href="#" class="remove" title="Artikel entfernen"><i class="ion-ios-close-outline"></i></a>
-                            </span>
-                        </div>
-                        <div class="col-sm-2 col-xs-12 text-right price">
-                            <label class="visible-xs-inline-block">Einzelpreis</label>
-                            <span data-bind="text:price|currency "></span>
-                        </div>
-                        <div class="col-sm-2 col-xs-12 text-center qty">
-                            <label class="visible-xs-inline-block">Menge</label>
-                            <div class="qty-ctrl">
-                                <i class="ion-ios-minus-outline" data-bind="click:decQty"></i>
-                                <input type="text" data-bind="textInput:qty" class="text-center form-control" style="width: 3em;" />
-                                <i class="ion-ios-plus-outline" data-bind="click:incQty"></i>
-                            </div>
-                        </div>
-                        <div class="col-sm-2 col-xs-12 text-right total-price">
-                            <label class="visible-xs-inline-block">Preis</label>
-                            <strong data-bind="text:sum|currency"></strong>
-                        </div>
-                    </li>
-                    <!-- /ko -->
-                    <li class="row sub_total">
-                        <div class="col-xs-12 text-right">
-                            <span>Zwischensumme von <span data-bind="text:productCount">0</span> Artikel(n): </span>
-                            <h3 class="amount" data-bind="text:subTotal|currency"></h3>
+        </div>
+    <div class="col-xs-12" data-bind="visible:!empty()" style="display:none;">
+            <ul class="list-unstyled line_items">
+                <li class="row header hidden-xs">
+                <div class="col-xs-6">
+                    <h3>Warenkorb</h3>
+                </div>
+                <div class="col-xs-2 text-right"> Preis </div>
+                <div class="col-xs-2 text-center"> Menge </div>
+                <div class="col-xs-2 text-right"> Summe </div>
+                </li>
+                <!-- ko foreach: lineItems -->
+                <li class="item row clearfix">
+                <div class="col-xs-12 visible-xs-block text-center title">
+                    <h4>
+                        <a data-bind="attr: { href: product.url }, text:product.title"></a>
+                    </h4>
+                </div>
+                <div class="col-sm-2 col-xs-12 image">
+                    <img data-bind="attr: {src:product.product_images[0].url}" />
+                </div>
+                <div class="col-sm-4 col-xs-12 hidden-xs">
+                    <span class="title">
+                        <a data-bind="attr: { href: product.url }, text:product.title"></a>
+                        <a href="#" class="remove" data-bind="click:$parent.remove.bind($data, id)" title="Artikel entfernen"><i class="ion-ios-close-outline"></i></a>
+                    </span>
+                </div>
+                <div class="col-sm-2 col-xs-12 text-right price">
+                    <label class="visible-xs-inline-block">Einzelpreis</label>
+                    <span data-bind="text:price|currency "></span>
+                </div>
+                <div class="col-sm-2 col-xs-12 text-center qty">
+                    <label class="visible-xs-inline-block">Menge</label>
+                    <div class="qty-ctrl">
+                        <i class="ion-ios-minus-outline" data-bind="click:decQty"></i>
+                        <input type="text" data-bind="textInput:qty" class="text-center form-control" style="width: 3em;" />
+                        <i class="ion-ios-plus-outline" data-bind="click:incQty"></i>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-xs-12 text-right total-price">
+                    <label class="visible-xs-inline-block">Preis</label>
+                    <strong data-bind="text:sum|currency"></strong>
+                </div>
+                </li>
+                <!-- /ko -->
+                <li class="row sub_total">
+                <div class="col-xs-12 text-right">
+                    <span>Zwischensumme von <span data-bind="text:productCount">0</span> Artikel(n): </span>
+                    <h3 class="amount" data-bind="text:subTotal|currency"></h3>
                     </li>
                 </ul>
             </div>
 
-            <div class="col-xs-12 col-sm-4 col-sm-offset-8 col-lg-2 col-lg-offset-10">
-                <a href="<%= order_new_path %>" class="btn btn-primary">Weiter...</a>
+            <div class="col-xs-12 col-sm-4 col-sm-offset-8 col-lg-2 col-lg-offset-10" data-bind="visible:!empty()" style="display:none;">
+                <a href="<%= order_new_path %>" class="btn btn-primary" onclick="$(this).addClass('disabled');this.innerText='Laden...';">Weiter...</a>
             </div>
-        <% end %>
+        </div>
     </div>
-</div>

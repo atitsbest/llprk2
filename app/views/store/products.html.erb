@@ -33,7 +33,7 @@
                             <p class="qty">
                                 <label>Menge</label><input type="text"i name="qty" value="1" />
                             </p>
-                            <button type="submit" class="btn btn-primary">In den Warenkorb</button>
+                            <button type="submit" class="btn btn-primary" onclick="this.innerText='Hinzufügen...';setTimeout(function(){ this.disabled='disabled';}.bind(this),0);">In den Warenkorb</button>
                         <% end %>
                     </div>
                 <% end %>

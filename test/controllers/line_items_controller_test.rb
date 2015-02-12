@@ -25,6 +25,16 @@ class LineItemsControllerTest < ActionController::TestCase
             delete :destroy, {id: line_items(:one).id}, { cart_id: 1 }
         end
 
-        assert_redirected_to cart_path
+        assert_response :success
     end
+
+    test 'update line_item quantity' do
+        li = line_items(:one)
+        patch :update, { id: li.id, qty: 13 }, format: 'json', cart_id: 1
+
+        assert_response :success
+        li = LineItem.find(li.id)
+        assert_equal 13, li.qty
+    end
+
 end

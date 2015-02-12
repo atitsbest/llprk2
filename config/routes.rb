@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get 'store/products/:id', to: 'store#products', as: 'store_products'
 
     # === LINEITEMS ===
-    resources :line_items, only: [:create, :destroy]
+    resources :line_items, only: [:create, :destroy, :update]
 
     # === CART ===
     get 'cart', to: 'cart#show', as: 'cart'

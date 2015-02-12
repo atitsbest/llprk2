@@ -20,8 +20,6 @@
 //= require knockout.punches
 //= require turbolinks
 //= require owl.carousel
-//= require spin
-//= require ladda
 //= require twitter/bootstrap/collapse
 //= require_tree .
 

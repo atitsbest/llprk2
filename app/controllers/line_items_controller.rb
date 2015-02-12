@@ -18,12 +18,23 @@ class LineItemsController < ApplicationController
         end
     end
 
+    # PATCH/PUT /line_items/1.json
+    def update
+        line_item = @cart.line_items.find(params[:id])
+        line_item.update!(line_item_update_params)
+        render json: {}, status: :ok
+    end
+
     # Eine Bestellzeile komplet aus dem Warenkorb entfernen.
     def destroy
         li = @cart.line_items.find_by_id!(params[:id])
         li.destroy
-        respond_to do |format|
-            format.html { redirect_to cart_url, notice: 'Produkt wurde aus Deinem Warenkorb entfernt.' }
-        end
+        render json: {}, status: :ok
+    end
+
+    private
+
+    def line_item_update_params
+        params.permit(:qty)
     end
 end
