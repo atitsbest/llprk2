@@ -11,46 +11,48 @@
             <div class="col-xs-12">
                 <ul class="list-unstyled line_items">
                     <li class="row header hidden-xs">
-                        <div class="col-xs-7">
+                        <div class="col-xs-6">
                             <h3>Warenkorb</h3>
                         </div>
-                        <div class="col-xs-1 text-center">
-                            Menge
-                        </div>
-                        <div class="col-xs-2 text-right">
-                            Preis
-                        </div>
-                        <div class="col-xs-2 text-right">
-                            Summe
-                        </div>
+                        <div class="col-xs-2 text-right"> Preis </div>
+                        <div class="col-xs-2 text-center"> Menge </div>
+                        <div class="col-xs-2 text-right"> Summe </div>
                     </li>
                     <!-- ko foreach: lineItems -->
                     <li class="item row clearfix">
-                        <div class="col-sm-2 col-xs-12 image">
-                            <img data-bind="attr: {src:product.product_images[0].url}" />
-                        </div>
-                        <div class="col-sm-4 col-xs-12">
+                        <div class="col-xs-12 visible-xs-block text-center">
                             <span class="title">
                                 <a data-bind="attr: { href: product.url }, text:product.title"></a>
                             </span>
                         </div>
-                        <div class="col-sm-2 col-xs-2 text-center qty">
+                        <div class="col-sm-2 col-xs-12 image">
+                            <img data-bind="attr: {src:product.product_images[0].url}" />
+                        </div>
+                        <div class="col-sm-4 col-xs-12 hidden-xs">
+                            <span class="title">
+                                <a data-bind="attr: { href: product.url }, text:product.title"></a>
+                            <a href="#" class="remove" title="Artikel entfernen"><i class="ion-ios-close-outline"></i></a>
+                            </span>
+                        </div>
+                        <div class="col-sm-2 col-xs-12 text-right">
+                            <label class="visible-xs-inline-block">Einzelpreis</label>
+                            <span class="price" data-bind="text:price|currency "></span>
+                        </div>
+                        <div class="col-sm-2 col-xs-12 text-center qty">
+                            <label class="visible-xs-inline-block">Menge</label>
                             <i class="ion-ios-minus-outline" data-bind="click:decQty"></i>
                             <input type="text" data-bind="textInput:qty" class="text-center form-control" style="width: 3em;" />
                             <i class="ion-ios-plus-outline" data-bind="click:incQty"></i>
-                            <%# <%= link_to 'entfernen', line_item, method: :delete, html: { class: 'text-muted' } %>
                         </div>
-                        <div class="col-sm-2 col-xs-5 text-right">
-                            <span class="price" data-bind="text:price|currency "></span>
-                        </div>
-                        <div class="col-sm-2 col-xs-5 text-right">
+                        <div class="col-sm-2 col-xs-12 text-right">
+                            <label class="visible-xs-inline-block">Preis</label>
                             <strong class="price" data-bind="text:sum|currency"></strong>
                         </div>
                     </li>
                     <!-- /ko -->
                     <li class="row sub_total">
                         <div class="col-xs-12 text-right">
-                            <span>Zwischensumme von <%= @cart.line_items.length %> Artikel(n): </span>
+                            <span>Zwischensumme von <span data-bind="text:productCount">0</span> Artikel(n): </span>
                             <h3 class="amount" data-bind="text:subTotal|currency"></h3>
                     </li>
                 </ul>

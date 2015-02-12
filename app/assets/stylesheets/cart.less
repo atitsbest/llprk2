@@ -49,13 +49,24 @@
             &.item {
                 .noselect;
 
+                @media (max-width: 768px) {
+                    .col-xs-12 {
+                        border-bottom: 1px solid #d8d8d8;
+                    }
+                }
+
                 span, strong, input {
-                    display: block;
+                    display: inline-block;
                     margin-top: 40px;
                 }
 
                 a {
                     color: #333;
+                    &.remove {
+                        font-size: 1.3em;
+                        position: relative;
+                        top: 1px;
+                    }
                 }
 
                 .qty {
@@ -63,10 +74,17 @@
                         display: inline-block;
                         margin-top: 35px;
                     }
+
                     i {
                         font-size: 1.3em;
                         margin: 0 2px;
                         cursor: pointer;
+                        color: #bbb;
+
+                        &:hover {
+                            color: #000;
+                            font-weight: bold;
+                        }
                     }
 
                 }

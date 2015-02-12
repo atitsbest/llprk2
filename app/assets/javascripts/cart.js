@@ -11,6 +11,11 @@ $('.cart.show').ready(function() {
             return _.reduce(self.lineItems(), function(m, x) { return m + x.qty() * x.price; }, 0);
         });
 
+        // Anzahl der Artikel (berücksichtigt qty).
+        self.productCount = ko.pureComputed(function() {
+            return _.reduce(self.lineItems(), function(m, x) { return m + x.qty(); }, 0);
+        });
+
 
         // Warenkorbdaten vom Server laden.
         $.when($.getJSON('cart')).then(function(data) {
