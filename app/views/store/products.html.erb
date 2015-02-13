@@ -10,7 +10,7 @@
                     <div class="hidden-xs col-sm-2">
                         <ul class="list-unstyled images text-center">
                             <% @product.images.each do |image| %>
-                                <li><img class="unveil" data-src="<%= image.content.url(:gallery) %>" /></li>
+                                <li><img class="unveil" data-src="<%= image.content.url(:gallery) %>" data-large="<%= image.content.url(:normal) %>" /></li>
                         <% end %>
                         </ul>
                     </div>
