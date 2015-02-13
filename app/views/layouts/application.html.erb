@@ -12,11 +12,9 @@
 </head>
 <body class="<%= controller_name %> <%= action_name %>">
 
-<div class="container">
-    <p id="notice"><%= notice %></p>
+<div class="global-wrapper">
+    <%= yield %>
 </div>
-
-<%= yield %>
 
 <footer>
     <div class="container">

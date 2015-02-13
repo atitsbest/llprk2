@@ -20,10 +20,19 @@
 
 @color: #0a4d6d;
 
+html, body {
+    height: 100%;
+}
+
 body {
     font-family: Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     margin-top: 50px;
+
+    .global-wrapper {
+        min-height: 100%;
+        height: auto !important;
+    }
 
     .navbar-default {
         border-top: 4px solid #333;

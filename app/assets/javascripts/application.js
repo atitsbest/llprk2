@@ -28,5 +28,3 @@ ko.punches.attributeInterpolationMarkup.enable();
 // Enable filter syntax for text, html
 ko.punches.textFilter.enableForBinding('text');
 ko.punches.textFilter.enableForBinding('html');
-
-Ladda.bind('input[type=submit]');
