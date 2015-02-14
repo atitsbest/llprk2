@@ -1,4 +1,4 @@
-$('.order.new').ready(function() {
+$('.order.new, .order.create').ready(function() {
     var $shippingCosts = $('.summary .shipping-cost span'),
         $countrySelect = $('#order_country_id'),
         $subTotal = $('.summary .sub-total span'),
@@ -34,4 +34,11 @@ $('.order.new').ready(function() {
     // Gleich mal die Versandkosten für das aktuelle Land anzeigen.
     _updateShippingCosts();
     _updateTotalPrice();
+
+    // Fehler anzeigen:
+    if ($('#order_accepted').parent().hasClass('field_with_errors')) {
+        $('.accept-terms')
+            .css('color', '#a94442')
+            .css('background', '#f2dede');
+    }
 });

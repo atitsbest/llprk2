@@ -180,11 +180,25 @@ img.unveil {
     &:hover {
         background: #000;
     }
+    @media (max-width: 768px) {
+        letter-spacing: 0;
+    }
 }
 
-.form-control {
-    border-radius: 0;
-    // -webkit-appearance: none;
+form {
+    .field_with_errors {
+        label {
+            color: #a94442
+        }
+        input, select {
+            border-color: #ebccd1;
+            background: #f2dede;
+            color: #a94442;
+        }
+    }
+    .form-control {
+        border-radius: 0;
+    }
 }
 .container {
 }

@@ -1,5 +1,12 @@
 (function ($) {
+    var turboReady = false;
+
+    $(document).on('page:load, page:fetch', function() { 
+        turboReady = true;
+    });
+
     var ready = $.fn.ready;
+
     $.fn.ready = function (fn) {
         if (this.context === undefined) {
             // The $().ready(fn) case.

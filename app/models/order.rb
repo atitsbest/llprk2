@@ -11,6 +11,7 @@ class Order < ActiveRecord::Base
     validates :pay_type, inclusion: PAYMENT_TYPES
     validates :salutation, inclusion: SALUTATIONS
     validates :order_number, uniqueness: true
+    validates :accepted, presence: true
 
     # Gesamtpreis des Auftrags (exkl. Versand).
     def sub_total_price
@@ -34,6 +35,9 @@ class Order < ActiveRecord::Base
     def paypal?
         pay_type == 'paypal'
     end
+
+    # AGBs akzeptiert?
+    attr_accessor :accepted
 
 
     # Erstellt eine Bestellung aus einem Warenkorb.

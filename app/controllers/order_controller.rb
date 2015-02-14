@@ -9,18 +9,8 @@ class OrderController < ApplicationController
             return
         end
 
-        # Liste aller Länder mit den Versandkosten.
-        @shipping_costs = {}
-        Country.all.each do |c|
-            @shipping_costs[c.id] = ShippingCostService.costs_for_line_items(@cart.line_items, c.id)
-        end
+        prepare_shipping_costs
 
-        @countries = Country.all.map do |c|
-            costs = @shipping_costs[c.id]
-            [ c.id,
-              "#{c.name} (Versand: #{ActionController::Base.helpers.number_to_currency costs})"
-            ]
-        end
         @order = Order.new
     end
 
@@ -61,6 +51,7 @@ class OrderController < ApplicationController
                     format.html { redirect_to store_url, notice: 'Vielen Dank für Ihre Bestellung.' }
                 end
             else
+                prepare_shipping_costs
                 format.html { render action: 'new' }
             end
         end
@@ -78,6 +69,24 @@ class OrderController < ApplicationController
         order.shipping_costs = ShippingCostService.costs_for_order(order)
 
         order
+    end
+
+    # Alle Länder mit Versandkosten versehen.
+    # Hilfsmethode für new und create.
+    def prepare_shipping_costs
+        # Liste aller Länder mit den Versandkosten.
+        @shipping_costs = {}
+        Country.all.each do |c|
+            @shipping_costs[c.id] = ShippingCostService.costs_for_line_items(@cart.line_items, c.id)
+        end
+
+        @countries = Country.all.map do |c|
+            costs = @shipping_costs[c.id]
+            [ c.id,
+              "#{c.name} (Versand: #{ActionController::Base.helpers.number_to_currency costs})"
+            ]
+        end
+
     end
 
 end
