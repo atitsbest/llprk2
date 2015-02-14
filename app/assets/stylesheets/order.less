@@ -16,19 +16,44 @@
     }
 
     .summary {
+        border: 6px solid #f1f1f1;
+
+        h4 {
+            margin: 20px 20px 20px;
+        }
+
         p {
-            text-transform: uppercase;
-            border-bottom: 1px solid #d8d8d8;
-            padding-bottom: 5px;
+            // text-transform: uppercase;
+            margin-left: 20px;
+            margin-right: 20px;
+            border-top: 1px solid #d8d8d8;
+            padding-top: 10px;
 
             span { 
                 position: absolute;
-                right: 0;
+                right: 20px;
+            }
+
+            &:nth-child(1) {
+                border-top: none;
+            }
+
+            &.line-item {
+            }
+
+            &.sub-total {
+                border-top: 2px solid #d8d8d8;
+                font-weight: bold;
+            }
+            &.shipping-cost {
+                // font-weight: bold;
             }
 
             &.total { 
                 font-weight: bold;
-                margin-top: 30px;
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 2px solid #333;
                 border-bottom: none;
 
                 span { 

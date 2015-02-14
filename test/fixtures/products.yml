@@ -18,3 +18,9 @@ jacob:
   description: Leichte Sommertasche in frischen Grün-Blau-Tönen
   price: 47.90
   shipping_category: medium
+
+no_shipping_category:
+  title: NoSC
+  description: Falls einer keiner Shippingcategory braucht
+  price: 47.90
+  shipping_category:

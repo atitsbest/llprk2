@@ -9,6 +9,18 @@ class OrderController < ApplicationController
             return
         end
 
+        # Liste aller Länder mit den Versandkosten.
+        @shipping_costs = {}
+        Country.all.each do |c|
+            @shipping_costs[c.id] = ShippingCostService.costs_for_line_items(@cart.line_items, c.id)
+        end
+
+        @countries = Country.all.map do |c|
+            costs = @shipping_costs[c.id]
+            [ c.id,
+              "#{c.name} (Versand: #{ActionController::Base.helpers.number_to_currency costs})"
+            ]
+        end
         @order = Order.new
     end
 

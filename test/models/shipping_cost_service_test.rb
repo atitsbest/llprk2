@@ -26,6 +26,14 @@ class ShippingCostServiceTest < ActiveSupport::TestCase
         order = orders(:two)
         costs = ShippingCostService.costs_for_line_items(order.line_items, 'at')
         assert_equal 4.5+(2*1.5), costs
-      end
+    end
+
+
+    # test "use first shipping category if none is set" do
+    #     product = products(:no_shipping_category)
+    #     costs = ShippingCostService.costs_for_product(product, 'at')
+    #
+    #     assert_equal(3.5, costs)
+    # end
 end
 

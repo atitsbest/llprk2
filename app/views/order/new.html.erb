@@ -5,24 +5,7 @@
                 <h3>Zur Kasse</h3>
             </div>
         </div>
-        <div class="col-sm-4 col-xs-12 summary">
-            <div class="row">
-                <h4>Bestellübersicht</h4>
-                <p class="sub-total">
-                    Zwischensumme:
-                    <span><%= number_to_currency @cart.sub_total_price %></span>
-                </p>
-                <p class="shipping-cost">
-                    Versand:
-                    <span><%= number_to_currency 0 %></span>
-                </p>
-                <p class="total">
-                    Gesamt:
-                    <span><%= number_to_currency @cart.sub_total_price %></span>
-                </p>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-7 col-sm-offset-1">
+        <div class="col-xs-12 col-sm-7">
             <div class="row">
                 <h4>Lieferadresse</h4>
             </div>
@@ -32,11 +15,15 @@
                         <h2>Bitte korrigieren Sie folgende Fehler:</h2>
                         <ul>
                             <% @order.errors.full_messages.each do |msg| %>
-                            <li><%= msg %></li>
+                                <li><%= msg %></li>
                             <% end %>
                         </ul>
                     </div>
                 <% end %>
+                <div class="form-group">
+                    <%= f.label :country_id, "Land" %>
+                    <%= f.collection_select(:country_id, @countries, :first, :last, {}, class: 'form-control') %>
+                </div>
                 <div class="form-group">
                     <%= f.label :salutation, "Anrede" %>
                     <%= f.select(:salutation, Order::SALUTATIONS, { prompt: 'Anrede wählen' }, :class => "form-control") %>
@@ -66,22 +53,18 @@
                     <%= f.text_field :city, class: 'form-control' %>
                 </div>
                 <div class="form-group">
-                    <%= f.label :country_id, "Land" %>
-                    <%= f.collection_select(:country_id, Country.all, :id, :name, {}, class: 'form-control') %>
-                </div>
-                <div class="form-group">
                     <%= f.label :email, "E-Mail" %>
                     <%= f.text_field :email, class: 'form-control' %>
                 </div>
                 <div class="form-group">
                     <%= f.label :pay_type, "Zahlungsart" %>
                     <p>
-                        <%= f.radio_button :pay_type, :wire %>
+                        <%= f.radio_button :pay_type, :wire, checked: true %>
                         <span>Überweisung</span>
                     </p>
                     <p>
                         <%= f.radio_button :pay_type, :paypal %>
-                        <%= link_to(image_tag("http://akunpaypal.files.wordpress.com/2012/02/paypal1.jpg", width:'100px'), order_express_path) %>
+                        <%= link_to(image_tag("paypal@2.png", width:'100px'), order_express_path) %>
                     </p>
                 </div>
                 <p>
@@ -89,5 +72,31 @@
                 </p>
             <% end %>
         </div>
+        <div class="col-sm-4 col-xs-12 col-sm-offset-1 summary">
+            <div class="row">
+                <h4>Bestellübersicht</h4>
+                <% @cart.line_items.each do |item| %>
+                <p class="line-item">
+                    <%= item.qty %> x <%= item.product.title %>
+                    <span><%= number_to_currency item.sub_total %></span>
+                </p>
+                <% end %>
+                <p class="sub-total">
+                    Zwischensumme:
+                    <span data-value="<%= @cart.sub_total_price %>"><%= number_to_currency @cart.sub_total_price %></span>
+                </p>
+                <p class="shipping-cost">
+                    Versand:
+                    <span><%= number_to_currency 0 %></span>
+                </p>
+                <p class="total">
+                    Gesamt:
+                    <span><%= number_to_currency @cart.sub_total_price %></span>
+                </p>
+            </div>
+        </div>
     </div>
 </div>
+<script>
+    var shipping_costs = <%= sanitize @shipping_costs.to_json %>;
+</script>

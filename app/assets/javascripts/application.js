@@ -28,3 +28,12 @@ ko.punches.attributeInterpolationMarkup.enable();
 // Enable filter syntax for text, html
 ko.punches.textFilter.enableForBinding('text');
 ko.punches.textFilter.enableForBinding('html');
+
+/**
+ * Nummer als 99.99 € anzeigen.
+ *
+ * @returns {string}
+ */
+Number.prototype.toCurrencyString = function() {
+    return this.toFixed(2) + ' €';
+}
