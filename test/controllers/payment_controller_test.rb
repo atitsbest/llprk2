@@ -14,7 +14,7 @@ class PaymentControllerTest < ActionController::TestCase
         fake_paypal_response 'checkout/failure'
         get :success, token: '345', PayerID: '1234'
 
-        assert_redirected_to order_new_url
+        assert_redirected_to new_order_url
         assert_not_nil flash[:error]
     end
 
@@ -24,7 +24,7 @@ class PaymentControllerTest < ActionController::TestCase
         payment = Payment.find_by_token '345'
         assert payment.canceled
         assert !payment.completed
-        assert_redirected_to order_edit_url(payment.order)
+        assert_redirected_to edit_order_url(payment.order)
         assert_not_nil flash[:notice]
     end
 

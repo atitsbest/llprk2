@@ -16,7 +16,7 @@ class PaymentController < ApplicationController
             payment.cancel!
             flash[:notice] = "Sie haben die Bezahlung per Paypal abgebrochen."
 
-            redirect_to order_edit_url(payment.order)
+            redirect_to edit_order_url(payment.order)
         rescue Exception => e
             redirect_to store_url, flash: { error: e.message }
         end
@@ -25,7 +25,7 @@ class PaymentController < ApplicationController
     private
 
     def paypal_api_error(e)
-        redirect_to order_new_url, flash: { error: e.response.details.collect(&:long_message).join('<br/') }
+        redirect_to new_order_url, flash: { error: e.response.details.collect(&:long_message).join('<br/') }
     end
 
 end

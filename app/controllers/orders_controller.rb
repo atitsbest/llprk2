@@ -1,4 +1,4 @@
-class OrderController < ApplicationController
+class OrdersController < ApplicationController
     include CurrentCart
     before_action :set_cart
 
@@ -17,6 +17,7 @@ class OrderController < ApplicationController
     # Offene Bestellung wird angezeigt.
     def edit
         @order = Order.find_by_id!(params[:id])
+        prepare_shipping_costs
 
         respond_to do |format|
             format.html { render :new }
@@ -27,6 +28,7 @@ class OrderController < ApplicationController
     def create
         @order = create_order_from_cart(@cart)
         @order.ip = request.remote_ip
+        @order.accepted = params[:order][:accepted]
 
         respond_to do |format|
             if @order.save
@@ -43,12 +45,12 @@ class OrderController < ApplicationController
                     payment = Payment.new(amount: @order.total_price, order: @order)
                     payment.setup!(
                         payment_success_url,
-                        order_new_url
+                        new_order_url
                     )
                     format.html { redirect_to payment.redirect_url }
                 else
                     # Wenn kein PayPal, dann sagen wir Danke.
-                    format.html { redirect_to store_url, notice: 'Vielen Dank für Ihre Bestellung.' }
+                    format.html { redirect_to success_order_url, notice: 'Vielen Dank für Ihre Bestellung.' }
                 end
             else
                 prepare_shipping_costs
@@ -56,6 +58,11 @@ class OrderController < ApplicationController
             end
         end
     end
+
+    # Wenn die Bestellung erfolgreich aufgegeben wurde.
+    def success
+    end
+
 
     private
 

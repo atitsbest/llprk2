@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class OrderControllerTest < ActionController::TestCase
+class OrdersControllerTest < ActionController::TestCase
     test "requires items in cart" do
         get :new
         assert_redirected_to store_path
@@ -30,7 +30,7 @@ class OrderControllerTest < ActionController::TestCase
             post_create_wire_order
         end
 
-        assert_redirected_to store_path
+        assert_redirected_to success_order_url
     end
 
     test "should create order number" do
@@ -67,6 +67,16 @@ class OrderControllerTest < ActionController::TestCase
         assert_response 302
     end
 
+    test "show order confirmation" do
+        post_create_wire_order
+
+        assert_redirected_to success_order_url
+    end
+
+    test "should get success" do
+        get :success
+        assert_response :success
+    end
 
     private
     def post_create_order
@@ -80,7 +90,8 @@ class OrderControllerTest < ActionController::TestCase
               city: 'Testhausen',
               country_id: 'at',
               email: 'test@tester.test',
-              pay_type: 'paypal'
+              pay_type: 'paypal',
+              accepted: true
         }
     end
 
@@ -95,7 +106,8 @@ class OrderControllerTest < ActionController::TestCase
               city: 'Testhausen',
               country_id: 'at',
               email: 'test@tester.test',
-              pay_type: 'wire'
+              pay_type: 'wire',
+              accepted: true
         }
     end
 end

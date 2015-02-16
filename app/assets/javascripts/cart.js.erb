@@ -47,7 +47,7 @@ $('.cart.show').ready(function() {
         };
 
         // Warenkorbdaten vom Server laden.
-        $.when($.getJSON('cart')).then(function(data) {
+        $.when($.getJSON('cart.json')).then(function(data) {
             self.loaded(true);
             self.lineItems(_(data.line_items).map(function(li) {
                 li = _.extend(li, {

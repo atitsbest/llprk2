@@ -9,7 +9,7 @@ class StoreControllerTest < ActionController::TestCase
     get :index
     assert_response :success
 
-    assert_select '#products .product', 3
+    assert_select '#products .product', Product.count
   end
 
   test "should get details" do

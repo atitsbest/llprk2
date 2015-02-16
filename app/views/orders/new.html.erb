@@ -10,7 +10,7 @@
                 </small>
             </div>
         </div>
-        <%= form_for @order, url: order_new_path, html: { class: "form form-horizontal" } do |f| %>
+        <%= form_for @order, url: new_order_path, html: { class: "form form-horizontal" } do |f| %>
             <div class="col-xs-12 col-sm-7 delivery-address">
                 <div class="row">
                     <h4>Lieferadresse</h4>
@@ -130,7 +130,7 @@
                 </div>
                 <div class="col-xs-12">
                     <p class="row" style="padding-top: 20px;">
-                        <%= f.submit 'Bestellung abschicken', class: "btn btn-primary" %>
+                        <%= f.submit 'Bestellung abschicken', class: "btn btn-primary", onclick: "$(this).addClass('disabled');this.innerText='Bitte warten...';"  %>
                     </p>
                 </div>
             </div>

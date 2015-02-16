@@ -10,6 +10,7 @@ class OrderTest < ActiveSupport::TestCase
         sut = orders(:no_line_items)
         sut.add_line_items_from_cart(cart)
         sut.pay_type = :paypal
+        sut.accepted = true
         sut.save!
 
         # Cart neu laden um Änderungen sichtbar zu machen.
