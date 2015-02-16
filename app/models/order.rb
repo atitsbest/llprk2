@@ -11,7 +11,8 @@ class Order < ActiveRecord::Base
     validates :pay_type, inclusion: PAYMENT_TYPES
     validates :salutation, inclusion: SALUTATIONS
     validates :order_number, uniqueness: true
-    validates :accepted, presence: true
+    validates :accepted, inclusion: [true, false]
+    validate :check_accepted
 
     # Gesamtpreis des Auftrags (exkl. Versand).
     def sub_total_price
@@ -49,5 +50,9 @@ class Order < ActiveRecord::Base
         @order.add_line_items_from_cart(cart)
         @order.order_number = OrderNumberService.create_order_number
         return @order
+    end
+
+    def check_accepted
+        self.accepted == true
     end
 end

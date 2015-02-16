@@ -2,7 +2,7 @@ class StoreController < ApplicationController
 
     # Zeigt alle Produkte an.
     def index
-        @products = Product.includes(:images).order(:title)
+        @products = Product.includes(:images).order(:created_at).take(50)
     end
 
     # Zeigt ein einzelnes Produkt an.

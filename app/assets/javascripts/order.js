@@ -1,4 +1,4 @@
-$('.order.new, .order.create').ready(function() {
+$('.orders.new, .orders.create').ready(function() {
     var $shippingCosts = $('.summary .shipping-cost span'),
         $countrySelect = $('#order_country_id'),
         $subTotal = $('.summary .sub-total span'),
@@ -20,7 +20,7 @@ $('.order.new, .order.create').ready(function() {
     // Gesamtpreis auktualisiren.
     var _updateTotalPrice = function() {
         var costs = _shippingCosts(),
-            sub_total = $subTotal.data('value');
+            sub_total = parseFloat($subTotal.data('value'));
 
         $total.html((sub_total + costs).toCurrencyString());
     };

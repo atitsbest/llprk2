@@ -10,7 +10,7 @@
                 </small>
             </div>
         </div>
-        <%= form_for @order, url: new_order_path, html: { class: "form form-horizontal" } do |f| %>
+        <%= form_for @order, url: order_path, html: { class: "form form-horizontal" } do |f| %>
             <div class="col-xs-12 col-sm-7 delivery-address">
                 <div class="row">
                     <h4>Lieferadresse</h4>
@@ -117,7 +117,7 @@
                 <div class="col-xs-12 accept-terms">
                     <div class="row">
                         <div class="col-sm-1 col-xs-2">
-                            <p class="text-center"> <%= f.check_box :accepted %> </p>
+                            <%= f.check_box :accepted %>
                         </div>
                         <div class="col-sm-11 col-xs-10">
                             <p>
@@ -130,7 +130,7 @@
                 </div>
                 <div class="col-xs-12">
                     <p class="row" style="padding-top: 20px;">
-                        <%= f.submit 'Bestellung abschicken', class: "btn btn-primary", onclick: "$(this).addClass('disabled');this.innerText='Bitte warten...';"  %>
+                    <%= f.submit 'Bestellung abschicken', class: "btn btn-primary", onclick: "$(this).val('Bitte warten...');setTimeout(function(){$(this).attr('disabled', 'disabled');}.bind(this),0);"  %>
                     </p>
                 </div>
             </div>
