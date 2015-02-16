@@ -11,6 +11,7 @@ class Order < ActiveRecord::Base
     validates :pay_type, inclusion: PAYMENT_TYPES
     validates :salutation, inclusion: SALUTATIONS
     validates :order_number, uniqueness: true
+    validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
     validates :accepted, inclusion: [true, false]
     validate :check_accepted
 
