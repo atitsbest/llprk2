@@ -28,7 +28,6 @@ class OrdersController < ApplicationController
     def create
         @order = create_order_from_cart(@cart)
         @order.ip = request.remote_ip
-        byebug
         @order.accepted = (params[:order][:accepted] == '1')
 
         respond_to do |format|
