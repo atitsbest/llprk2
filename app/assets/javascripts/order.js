@@ -34,11 +34,4 @@ $('.orders.new, .orders.create').ready(function() {
     // Gleich mal die Versandkosten für das aktuelle Land anzeigen.
     _updateShippingCosts();
     _updateTotalPrice();
-
-    // Fehler anzeigen:
-    if ($('#order_accepted').parent().hasClass('field_with_errors')) {
-        $('.accept-terms')
-            .css('color', '#a94442')
-            .css('background', '#f2dede');
-    }
 });

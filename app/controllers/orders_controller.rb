@@ -28,7 +28,9 @@ class OrdersController < ApplicationController
     def create
         @order = create_order_from_cart(@cart)
         @order.ip = request.remote_ip
-        @order.accepted = (params[:order][:accepted] == '1')
+
+        # AGBs Akzeptiert
+        @accepted = ('1' == params[:accepted])
 
         respond_to do |format|
             if @order.save

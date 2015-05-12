@@ -114,10 +114,10 @@
                 </div>
             </div>
             <div class="row place-order">
-                <div class="col-xs-12 accept-terms">
+                <div class="col-xs-12 accept-terms <%= if @accepted == true then '' else 'error' end %> ">
                     <div class="row">
                         <div class="col-sm-1 col-xs-2">
-                            <%= f.check_box :accepted %>
+                            <%= check_box_tag :accepted %>
                         </div>
                         <div class="col-sm-11 col-xs-10">
                             <p>

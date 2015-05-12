@@ -12,8 +12,6 @@ class Order < ActiveRecord::Base
     validates :salutation, inclusion: SALUTATIONS
     validates :order_number, uniqueness: true
     validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-    validates :accepted, inclusion: [true, false]
-    validate :check_accepted
 
     # Gesamtpreis des Auftrags (exkl. Versand).
     def sub_total_price
@@ -38,9 +36,6 @@ class Order < ActiveRecord::Base
         pay_type == 'paypal'
     end
 
-    # AGBs akzeptiert?
-    attr_accessor :accepted
-
 
     # Erstellt eine Bestellung aus einem Warenkorb.
     # Setzt dazu noch die Auftragsnummer.
@@ -51,9 +46,5 @@ class Order < ActiveRecord::Base
         @order.add_line_items_from_cart(cart)
         @order.order_number = OrderNumberService.create_order_number
         return @order
-    end
-
-    def check_accepted
-        self.accepted == true
     end
 end
