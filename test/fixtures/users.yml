@@ -1,0 +1,5 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+tester:
+    name: Tester
+    email: tester@test.test
+    password_digest: $2a$10$7gi4pqq6TdXHGSuFaVJdF.Ycm.3AFuEeqH5M9ZNVwPn/SGyz8tcKO

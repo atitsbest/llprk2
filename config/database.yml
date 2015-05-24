@@ -16,7 +16,7 @@
 #
 default: &default
   adapter: postgresql
-  username: llprk
+  username:
   password: llprk
   encoding: unicode
   host: localhost
