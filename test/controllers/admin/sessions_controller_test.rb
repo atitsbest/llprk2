@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SessionControllerTest < ActionController::TestCase
+class Admin::SessionsControllerTest < ActionController::TestCase
   test "should get new" do
     get :new
     assert_response :success
@@ -10,7 +10,7 @@ class SessionControllerTest < ActionController::TestCase
     get :create, {email: 'tester@test.test', password:'1234'}
 
     assert_equal session[:user_id], users(:tester).id
-    assert_redirected_to '/'
+    assert_redirected_to :admin_dashboard
   end
 
   test "redirect to login with invalid credentials" do

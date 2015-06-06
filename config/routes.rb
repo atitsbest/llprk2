@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
 
-
-  get 'session/new'
-
-  get 'session/create'
-
-  get 'session/destroy'
-
     # === STORE ===
     get 'store', to: 'store#index', as: 'store'
     get 'store/products/:id', to: 'store#products', as: 'store_products'
@@ -32,6 +25,7 @@ Rails.application.routes.draw do
     # === ADMIN ===
     namespace :admin do
         resources :sessions, only: [:new, :create, :destroy]
+        get 'dashboard', to: 'dashboard#index', as: 'dashboard'
     end
 
     root 'store#index'
