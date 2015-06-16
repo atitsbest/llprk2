@@ -31,7 +31,7 @@ class Admin::SessionsControllerTest < ActionController::TestCase
         get :create, {email: 'tester@test.test', password:'1234'}
         assert_not_nil session[:user_id]
 
-        get :destroy
+        delete :destroy, {id: 123}
 
         assert_nil session[:user_id]
         assert_redirected_to :new_admin_session
