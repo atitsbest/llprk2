@@ -1,0 +1,12 @@
+<h1 class="page-header">Editing product</h1>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <%= form_for admin_product_path(@product), :html => { multipart: true, class: 'form' } do |f| %>
+            <%= render partial: 'form', locals: { f: f } %>
+        <% end %>
+    </div>
+</div>
+
+<%= link_to 'Show', admin_product_path(@product) %> |
+<%= link_to 'Back', admin_products_path %>

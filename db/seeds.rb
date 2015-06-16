@@ -5,12 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-# Dir[
-#     File.join(Rails.root, "lib", "paperclip", "*.rb")
-# ].each {|l| require l }
+Dir[
+    File.join(Rails.root, "lib", "paperclip", "*.rb")
+].each {|l| require l }
 
 puts "Mit alter llprk-DB verbinden..."
-client=TinyTds::Client.new(Rails.application.secrets.old_connectionstring)
+puts Rails.application.secrets.old_connectionstring
+client=TinyTds::Client.new(Rails.application.secrets.old_connectionstring.symbolize_keys)
 
 # Speichert die Zuordnung von alter Produkt-Id und neuer Produkt-Id.
 pp_ids = {}

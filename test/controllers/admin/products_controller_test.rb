@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ProductsControllerTest < ActionController::TestCase
+class Admin::ProductsControllerTest < ActionController::TestCase
     setup do
         @product = products(:soki)
     end
@@ -29,7 +29,7 @@ class ProductsControllerTest < ActionController::TestCase
             }
         end
 
-        assert_redirected_to product_path(assigns(:product))
+        assert_redirected_to admin_product_path(assigns(:product))
     end
 
     test "should show product" do
@@ -48,7 +48,7 @@ class ProductsControllerTest < ActionController::TestCase
             price: @product.price,
             title: @product.title
         }
-        assert_redirected_to product_path(assigns(:product))
+        assert_redirected_to admin_product_path(assigns(:product))
     end
 
     test "should update product with new images" do
@@ -64,7 +64,7 @@ class ProductsControllerTest < ActionController::TestCase
             }
         end
 
-        assert_redirected_to product_path(assigns(:product))
+        assert_redirected_to admin_product_path(assigns(:product))
     end
 
     test "reorder images" do
@@ -95,7 +95,7 @@ class ProductsControllerTest < ActionController::TestCase
         }
 
         assert ProductImage.find(first_id).pos > ProductImage.find(last_id).pos, "Bilder wurde nicht neu angeordnet."
-        assert_redirected_to product_path(assigns(:product))
+        assert_redirected_to admin_product_path(assigns(:product))
     end
 
     # test "should destroy product" do

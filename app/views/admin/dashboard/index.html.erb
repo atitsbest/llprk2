@@ -1,24 +1,31 @@
 <h1 class="page-header">Dashboard</h1>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Image</th>
-            <th>Title</th>
-            <th class="text-right">Price</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @products.each do |p| %>
-            <tr>
-                <td>
-                    <% if p.images.length > 0 %>
-                        <img src="<%= p.images.first.content.url(:gallery) %>" />
-                    <% end %>
-                </td>
-                <td><%= p.title %></td>
-                <td class="text-right"><%= number_to_currency(p.price) %></td>
-            </tr>
-        <% end %>
-    </tbody>
-</table>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <h3 class="page-header">Products</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th class="text-right">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @products.each do |p| %>
+                    <tr>
+                        <td width="1%">
+                            <% if p.images.length > 0 %>
+                                <a href="<%= edit_admin_product_url(p) %>">
+                                    <img src="<%= p.images.first.content.url(:thumbnail) %>" />
+                                </a>
+                            <% end %>
+                        </td>
+                        <td style="vertical-align:middle;font-weight:bold;"><%= link_to p.title, edit_admin_product_path(p)  %></td>
+                        <td class="text-right"><%= number_to_currency(p.price) %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

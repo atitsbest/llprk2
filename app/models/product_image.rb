@@ -3,7 +3,8 @@ class ProductImage < ActiveRecord::Base
         :styles => {
             :retina => "800x800",
             :normal => "400x400",
-            :gallery => "200x200"
+            :gallery => "200x200",
+            :thumbnail => "100x100"
         },
         :convert_options => {
             :normal => "-strip",

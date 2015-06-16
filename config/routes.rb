@@ -19,9 +19,6 @@ Rails.application.routes.draw do
     get 'payment/success'
     get 'payment/cancel'
 
-    # === PRODUCTS ===
-    resources :products
-
     # === ADMIN ===
     namespace :admin do
         resources :sessions, only: [:new, :create] do
@@ -29,6 +26,7 @@ Rails.application.routes.draw do
         end
         get 'dashboard', to: 'dashboard#index', as: 'dashboard'
         get '', to: 'dashboard#index'
+        resources :products
     end
 
     root 'store#index'
