@@ -1,4 +1,6 @@
 class Admin::SessionsController < AdminController
+  protect_from_forgery except: [:create]
+
   def new
       render layout: false
   end
@@ -9,6 +11,7 @@ class Admin::SessionsController < AdminController
           session[:user_id] = user.id
           redirect_to :admin_dashboard
       else
+          Rails.logger.info("Invalid username and/or password!")
           redirect_to :new_admin_session
       end
   end

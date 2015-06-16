@@ -7,7 +7,10 @@ class AdminController < ApplicationController
     end
 
     def authorize
-        redirect_to :new_admin_session unless current_user
+        unless current_user
+            Rails.logger.info("User not authenticated. Redirecting to login page...")
+            redirect_to :new_admin_session unless current_user
+        end
     end
 
     helper_method :current_user

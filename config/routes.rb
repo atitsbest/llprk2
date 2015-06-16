@@ -24,7 +24,9 @@ Rails.application.routes.draw do
 
     # === ADMIN ===
     namespace :admin do
-        resources :sessions, only: [:new, :create, :destroy]
+        resources :sessions, only: [:new, :create] do
+            get "destroy", on: :member, :as => "logout"
+        end
         get 'dashboard', to: 'dashboard#index', as: 'dashboard'
         get '', to: 'dashboard#index'
     end
