@@ -28,10 +28,10 @@ gem "puma"
 
 gem "paypal-express"
 gem "paperclip", "~> 4.2"
-gem "less-rails-bootstrap"
 gem "exception_notification", "~> 4.0.1"
 gem "rabl", "~> 0.11.0"
 gem "requirejs-rails", git: "git://github.com/jwhitley/requirejs-rails.git"
+gem "less-rails"
 
 group :development do
     # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
