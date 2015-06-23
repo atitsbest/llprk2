@@ -16,12 +16,12 @@
 //= require turbolinks
 //= require jquery.readyselector
 //= require underscore
-//= require knockout-3.2.0
+//= require knockout
 //= require knockout.mapping
 //= require knockout.punches
 //= require owl.carousel
-//= require twitter/bootstrap/collapse
-//= require_tree .
+//= require bootstrap/collapse
+//= require_directory .
 
 // Knockout.Punches:
 ko.punches.attributeInterpolationMarkup.enable();

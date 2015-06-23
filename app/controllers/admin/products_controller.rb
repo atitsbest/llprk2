@@ -4,7 +4,13 @@ class Admin::ProductsController < AdminController
     # GET /products
     # GET /products.json
     def index
-        @products = Product.all
+        respond_to do |format|
+            format.html { 
+                @products = Product.take(10)
+                render
+            }
+            format.json { render json: to_source(Product.all, params) }
+        end
     end
 
     # GET /products/1

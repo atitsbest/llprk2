@@ -1,12 +1,13 @@
-<h1 class="page-header">Editing product</h1>
-
-<div class="panel panel-default">
-    <div class="panel-body">
-        <%= form_for admin_product_path(@product), :html => { multipart: true, class: 'form' } do |f| %>
-            <%= render partial: 'form', locals: { f: f } %>
-        <% end %>
+<div class="page-header row">
+    <div class="col-xs-9">
+        <h2><i class="glyphicon glyphicon-tag"></i> <span class="text-muted">Products</span> / <%= @product.title or "New" %></h2>
+    </div>
+    <div class="col-xs-3 text-right">
+        <a href="<%= admin_products_path %>" class="btn">Cancel</a>
+        <a href="<%= new_admin_product_path %>" class="btn btn-primary">Save</a>
     </div>
 </div>
 
-<%= link_to 'Show', admin_product_path(@product) %> |
-<%= link_to 'Back', admin_products_path %>
+<%= form_for admin_product_path(@product), :html => { multipart: true, class: 'form' } do |f| %>
+    <%= render partial: 'form', locals: { f: f } %>
+<% end %>

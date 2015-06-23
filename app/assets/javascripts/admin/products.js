@@ -1,6 +1,5 @@
-// =require jquery-ui-sortable.js
+define('admin/products', ['jquery'], function($) {
 
-(function() {
     function ready() {
         $('#images').sortable({
             cursor: 'move',
@@ -11,4 +10,4 @@
 
     $(document).ready(ready);
     $(document).on('page:load', ready);
-})();
+});

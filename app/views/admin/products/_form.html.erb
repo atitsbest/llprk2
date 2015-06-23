@@ -10,29 +10,48 @@
     </div>
 <% end %>
 
-<div class="form-group">
-    <%= f.label :title %><br>
-    <%= f.text_field :title, class: 'form-control' %>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="form-group">
+            <%= f.label :title %><br>
+            <%= f.text_field :title, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+            <%= f.label :description %><br>
+            <%= f.text_area :description, class: 'form-control', rows: 5 %>
+        </div>
+    </div>
 </div>
-<div class="form-group">
-    <%= f.label :description %><br>
-    <%= f.text_area :description, class: 'form-control', rows: 5 %>
-</div>
-<div class="form-group">
-    <%= f.label :images %>
-    <ul id="images" class="list-unstyled list-inline">
-        <%= content_tag_for(:li, @product.images) do |image, index| %>
-            <img src="<%= image.content.url(:thumbnail) %>" />
-            <input type="hidden" name="product[images[<%=index%>][id]" value="<%= image.id %>" />
-        <% end %>
-    </ul>
 
-    <%= f.file_field :new_images, multiple: true %>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="form-group">
+            <h3>Images</h3>
+            <ul id="images" class="list-unstyled list-inline">
+                <%= content_tag_for(:li, @product.images) do |image, index| %>
+                    <img src="<%= image.content.url(:thumbnail) %>" />
+                    <input type="hidden" name="product[images[<%=index%>][id]" value="<%= image.id %>" />
+                <% end %>
+            </ul>
+
+            <%= f.file_field :new_images, multiple: true %>
+        </div>
+    </div>
 </div>
-<div class="form-group">
-    <%= f.label :price %><br>
-    <%= f.text_field :price, class: 'form-control' %>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="form-group">
+            <%= f.label :price %><br>
+            <%= f.text_field :price, class: 'form-control' %>
+        </div>
+    </div>
 </div>
-<div class="actions">
-    <%= f.submit class: "btn btn-primary" %>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="form-group">
+            <label>Shipping</label>
+        </div>
+    </div>
 </div>
