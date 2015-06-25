@@ -35,6 +35,27 @@ class ApplicationControllerTest < ActionController::TestCase
         # Assert
         assert_equal Product.count, result[:total]
         assert_equal 'Soki', result[:data].first.title
+
+        # Arrange
+        ps[:count] = 2
+
+        # Act
+        result = sut.to_source(Product.all, ps)
+
+        # Assert
+        assert_equal 2, result[:count]
+        assert_equal 4, result[:total]
+
+        # Arrange
+        ps[:count] = 3
+        ps[:page] = 2
+
+        # Act
+        result = sut.to_source(Product.all, ps)
+
+        # Assert
+        assert_equal 1, result[:count]
+        assert_equal 4, result[:total]
     end
 end
 

@@ -19,8 +19,13 @@ class ApplicationController < ActionController::Base
             sort_str += " DESC" if ps[:desc]
             x = x.order(sort_str) 
         end
+
+        # Paging.
+        count = (ps[:count] || "9999").to_i
+        page = (ps[:page] || "1").to_i
+
         result[:total] = x.count
-        result[:data] = x.take((ps[:count] || "9999").to_i)
+        result[:data] = x.offset((page-1)*count).take(count)
         result[:count] = result[:data].length
         result
     end
