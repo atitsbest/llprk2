@@ -24,6 +24,8 @@ class ApplicationController < ActionController::Base
         count = (ps[:count] || "9999").to_i
         page = (ps[:page] || "1").to_i
 
+        result[:orderBy] = ps[:orderBy]
+        result[:page] = ps[:page]
         result[:total] = x.count
         result[:data] = x.offset((page-1)*count).take(count)
         result[:count] = result[:data].length
