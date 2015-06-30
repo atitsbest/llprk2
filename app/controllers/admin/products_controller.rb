@@ -6,7 +6,11 @@ class Admin::ProductsController < AdminController
     def index
         respond_to do |format|
             format.html
-            format.json { @products = to_source(Product.all, params) }
+            format.json do
+                ps = Product.all
+                ps = ps.where('lower(title) like ?', "%#{params[:query].downcase}%") if params[:query]
+                @products = to_source(ps, params)
+            end
         end
     end
 

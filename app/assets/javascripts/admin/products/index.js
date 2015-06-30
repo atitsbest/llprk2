@@ -7,6 +7,7 @@ define('admin/products/index', ['jquery', 'knockout', 'source', 'ko.binding.sort
 
         self.products = new Source({
             url: settings.productsUrl,
+            filter: ko.observable(),
             sort: {
                 by: 'title'
             },

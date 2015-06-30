@@ -9,7 +9,11 @@
 
 <div class="panel panel-default">
     <div class="panel-body">
-        <pagesize params="source: products, text: 'Einträge pro Seite'" style="display: inline-block;"></pagesize>
+        <div class="row" style="padding-bottom:30px;">
+            <div class="col-xs-12">
+                <input type="text" class="form-control" data-bind="value:products.filter"  placeholder="Start typing to search for products..." />
+            </div>
+        </div>
 
         <table class="table" data-bind="with:products">
             <thead>
@@ -22,7 +26,7 @@
             </thead>
 
             <tbody data-bind="foreach:data">
-                <tr>
+                <tr data-bind="click:function() { location.href = '<%= admin_products_url %>/' + id + '/edit'; }">
                     <td>
                         <img data-bind="attr: { src: image_url }"></img>
                     </td>
@@ -36,6 +40,7 @@
         <div class="row">
             <div class="col-xs-4">
                 <pagernumberofitems params="source: products, text: 'Anzahl Einträge'"></pagernumberofitems>
+                <pagesize params="source: products, text: 'Einträge pro Seite'" style="display: inline-block;"></pagesize>
             </div>
             <div class="col-xs-8">
                 <pager params="source: products, visiblePages: 10" class="pull-right"></pager>
