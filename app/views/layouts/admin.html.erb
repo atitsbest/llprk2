@@ -15,7 +15,7 @@
                 <div class="col-sm-3 col-md-2 sidebar">
                     <div class="user">
                         <i class="glyphicon glyphicon-user"></i>
-                        <a href="<%= admin_dashboard_path %>" class="name"><%= current_user.name %></a>
+                        <a href="<%= admin_dashboard_path %>" class="name"><%= current_user.name unless current_user.nil? %></a>
                         <a href="<%= logout_admin_session_url(1) %>" class="logout">Logout</a>
                     </div>
                     <ul class="nav nav-sidebar">
