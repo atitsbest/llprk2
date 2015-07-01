@@ -4,10 +4,17 @@
     </div>
     <div class="col-xs-3 text-right">
         <a href="<%= admin_products_path %>" class="btn">Cancel</a>
-        <a href="<%= new_admin_product_path %>" class="btn btn-primary">Save</a>
+        <a href="#" onclick="document.getElementById('edit_product_<%= @product.id %>').submit();return false;" class="btn btn-primary">Save</a>
     </div>
 </div>
 
-<%= form_for admin_product_path(@product), :html => { multipart: true, class: 'form' } do |f| %>
+<%= form_for @product, url: admin_product_url(@product), :html => { multipart: true, class: 'form' } do |f| %>
     <%= render partial: 'form', locals: { f: f } %>
 <% end %>
+
+<script>
+    require(['admin/products/edit'], function(main) {
+        main({
+        });
+    });
+</script>
