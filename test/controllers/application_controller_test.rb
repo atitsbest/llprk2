@@ -23,6 +23,7 @@ class ApplicationControllerTest < ActionController::TestCase
         result = sut.to_source(Product.all, ps)
 
         # Assert
+        assert_equal 'title', result[:orderBy]
         assert_equal Product.count, result[:total]
         assert_equal 'Jacob', result[:data].first.title
 
@@ -37,6 +38,16 @@ class ApplicationControllerTest < ActionController::TestCase
         assert_equal 'Soki', result[:data].first.title
 
         # Arrange
+        ps[:orderBy] = 'price'
+
+        # Act
+        result = sut.to_source(Product.all, ps)
+
+        # Assert
+        assert_equal 'price', result[:orderBy]
+        assert_equal 0.99, result[:data][0].price
+
+        # Arrange paging
         ps[:count] = 2
 
         # Act
@@ -46,7 +57,7 @@ class ApplicationControllerTest < ActionController::TestCase
         assert_equal 2, result[:count]
         assert_equal 4, result[:total]
 
-        # Arrange
+        # Arrange paging
         ps[:count] = 3
         ps[:page] = 2
 

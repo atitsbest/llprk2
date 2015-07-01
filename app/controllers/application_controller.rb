@@ -15,7 +15,11 @@ class ApplicationController < ActionController::Base
         x = relation
         # Sort
         if ps[:orderBy]
-            sort_str = "lower(#{ps[:orderBy]})"
+            sort_str = ps[:orderBy]
+            if relation.columns_hash[ps[:orderBy]].type == :string
+                # Case-Insensitive bei einem String.
+                sort_str = "lower(#{ps[:orderBy]})"
+            end
             sort_str += " DESC" if ps[:desc]
             x = x.order(sort_str) 
         end
