@@ -1,7 +1,7 @@
 /**
  * Knockout VM für Admin-Produkte.
  */
-define('admin/products/index', ['jquery', 'knockout', 'source', 'ko.binding.sorter'], function($, ko, Source) {
+define('admin/products/index', ['jquery', 'knockout', 'source', 'ko.binding.sorter','ko.binding.currency'], function($, ko, Source) {
     function VM(settings) {
         var self = this;
 
